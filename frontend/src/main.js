@@ -554,7 +554,7 @@ function renderCrops() {
     return `
       <button type="button" class="crop-card ${selected ? 'is-selected' : ''}" data-crop-id="${escapeHtml(crop.id)}" aria-pressed="${selected}">
         <span class="crop-check" aria-hidden="true">${selected ? '✓' : ''}</span>
-        <img src="${escapeHtml(crop.image)}" alt="${escapeHtml(crop.name_zh)}" loading="lazy" />
+        <img src="${escapeHtml(STATIC_SITE ? staticAsset(String(crop.image || '').replace(/^\//, '')) : crop.image)}" alt="${escapeHtml(crop.name_zh)}" loading="lazy" />
         <span class="crop-name">${escapeHtml(crop.name_zh)}</span>
         <span class="crop-hakka">${escapeHtml(crop.name_hakka || '')}</span>
         <span class="crop-meta">${escapeHtml(crop.category || '')} ${seasonBadge(crop)}</span>
