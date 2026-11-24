@@ -7,10 +7,27 @@ const CLIMATE_BASELINE_OPTIONS = [
 const CLIMATE_BASELINE_KEY = 'climate_baseline';
 const PREVIEW_SPEECH_KEY = 'broadcast_preview_speech';
 const STATIC_SITE = window.location.hostname.endsWith('github.io') || new URLSearchParams(window.location.search).has('static');
-const API_BASE = (document.querySelector('meta[name="api-base"]')?.content || '').replace(/\/$/, '');
-const USE_REMOTE = Boolean(API_BASE);
-const DEMO_SITE = STATIC_SITE && !USE_REMOTE;
+let API_BASE = (document.querySelector('meta[name="api-base"]')?.content || '').replace(/\/$/, '');
+let USE_REMOTE = Boolean(API_BASE);
+let DEMO_SITE = STATIC_SITE && !USE_REMOTE;
 const APP_BASE = new URL('.', window.location.href).pathname;
+
+function applyApiBase(value) {
+  API_BASE = String(value || '').replace(/\/$/, '');
+  USE_REMOTE = Boolean(API_BASE);
+  DEMO_SITE = STATIC_SITE && !USE_REMOTE;
+}
+
+async function loadRuntimeConfig() {
+  try {
+    const response = await fetch(`${staticAsset('data/api_config.json')}?t=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) return;
+    const config = await response.json();
+    if (config?.api_base) applyApiBase(config.api_base);
+  } catch (_) {
+    // 沒有設定檔時沿用 HTML 的 meta 值。
+  }
+}
 
 function staticAsset(path) {
   return new URL(path, new URL(APP_BASE, window.location.href)).href;
@@ -1006,8 +1023,13 @@ async function loadPreferences() {
 
 async function loadBootstrap() {
   resetTts();
-  const response = await fetch(DEMO_SITE ? staticAsset('data/bootstrap.json') : apiUrl('/api/bootstrap'));
-  if (!response.ok) throw new Error('無法取得初始資料');
+  let response;
+  try {
+    response = await fetch(DEMO_SITE ? staticAsset('data/bootstrap.json') : apiUrl('/api/bootstrap'));
+  } catch (_) {
+    throw new Error(USE_REMOTE ? '無法連線到遠端 API' : '無法連線到後端');
+  }
+  if (!response.ok) throw new Error(`無法取得初始資料（HTTP ${response.status}）`);
   const data = await response.json();
   state.crops = data.crops || [];
   state.markets = data.markets || [];
@@ -1472,12 +1494,18 @@ async function boot() {
   renderActionBar();
   renderNotice();
   try {
+    await loadRuntimeConfig();
     await loadBootstrap();
     loadClimateBaselines();
     prewarmPreviewSounds();
     if (DEMO_SITE) setNotice('這是靜態展示版：資料為快照，廣播稿與語音為範例檔。', 'info');
   } catch (error) {
-    setNotice(DEMO_SITE ? `${error.message}。` : `${error.message}。請確認後端已在 http://127.0.0.1:8000 啟動。`, 'error');
+    const hint = DEMO_SITE
+      ? ''
+      : USE_REMOTE
+        ? '。請稍後再試，或確認本機公開伺服器仍在執行。'
+        : '。請確認後端已在 http://127.0.0.1:8000 啟動。';
+    setNotice(`${error.message}${hint}`, 'error');
   }
 }
 

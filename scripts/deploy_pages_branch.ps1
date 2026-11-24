@@ -14,12 +14,16 @@ New-Item -ItemType Directory -Path $site | Out-Null
 
 Copy-Item (Join-Path $root 'frontend/index.html') (Join-Path $site 'index.html')
 Copy-Item (Join-Path $root 'frontend/src') (Join-Path $site 'src') -Recurse
-Copy-Item (Join-Path $root 'frontend/public/.') $site -Recurse -Force
+Get-ChildItem (Join-Path $root 'frontend/public') -Force | Copy-Item -Destination $site -Recurse -Force
 
 $indexPath = Join-Path $site 'index.html'
 $html = Get-Content $indexPath -Raw -Encoding UTF8
-$html = $html.Replace('__API_BASE__', $ApiBase.TrimEnd('/'))
+$apiBase = $ApiBase.TrimEnd('/')
+$html = $html.Replace('__API_BASE__', $apiBase)
 Set-Content -Path $indexPath -Value $html -Encoding UTF8 -NoNewline
+
+$configPath = Join-Path $site 'data/api_config.json'
+@{ api_base = $apiBase } | ConvertTo-Json -Compress | Set-Content -Path $configPath -Encoding UTF8 -NoNewline
 
 Push-Location $site
 try {
