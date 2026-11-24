@@ -6,7 +6,7 @@ from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -234,9 +234,11 @@ def refresh() -> dict[str, Any]:
     }
 
 
-@app.get("/", include_in_schema=False)
-def index() -> FileResponse:
-    return FileResponse(FRONTEND_DIR / "index.html")
+@app.get("/", include_in_schema=False, response_class=HTMLResponse)
+def index() -> HTMLResponse:
+    html = (FRONTEND_DIR / "index.html").read_text(encoding="utf-8")
+    html = html.replace("__API_BASE__", "")
+    return HTMLResponse(html)
 
 
 app.mount("/src", StaticFiles(directory=str(FRONTEND_DIR / "src")), name="frontend-src")
