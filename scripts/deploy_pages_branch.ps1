@@ -1,6 +1,5 @@
 ﻿param(
-  [Parameter(Mandatory = $true)]
-  [string]$ApiBase
+  [string]$ApiBase = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -22,8 +21,10 @@ $apiBase = $ApiBase.TrimEnd('/')
 $html = $html.Replace('__API_BASE__', $apiBase)
 Set-Content -Path $indexPath -Value $html -Encoding UTF8 -NoNewline
 
-$configPath = Join-Path $site 'data/api_config.json'
-@{ api_base = $apiBase } | ConvertTo-Json -Compress | Set-Content -Path $configPath -Encoding UTF8 -NoNewline
+if ($apiBase) {
+  $configPath = Join-Path $site 'data/api_config.json'
+  @{ api_base = $apiBase } | ConvertTo-Json -Compress | Set-Content -Path $configPath -Encoding UTF8 -NoNewline
+}
 
 Push-Location $site
 try {
