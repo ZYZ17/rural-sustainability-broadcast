@@ -31,6 +31,10 @@ jobs:
           cp frontend/index.html site/index.html
           cp -r frontend/src site/src
           cp -r frontend/public/. site/
+      - name: Set remote API base
+        env:
+          API_BASE: ${{ vars.API_BASE }}
+        run: sed -i "s|__API_BASE__|$API_BASE|" site/index.html
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:

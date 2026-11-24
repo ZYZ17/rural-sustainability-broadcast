@@ -7,10 +7,25 @@ const CLIMATE_BASELINE_OPTIONS = [
 const CLIMATE_BASELINE_KEY = 'climate_baseline';
 const PREVIEW_SPEECH_KEY = 'broadcast_preview_speech';
 const STATIC_SITE = window.location.hostname.endsWith('github.io') || new URLSearchParams(window.location.search).has('static');
+const API_BASE = (document.querySelector('meta[name="api-base"]')?.content || '').replace(/\/$/, '');
+const USE_REMOTE = Boolean(API_BASE);
+const DEMO_SITE = STATIC_SITE && !USE_REMOTE;
 const APP_BASE = new URL('.', window.location.href).pathname;
 
 function staticAsset(path) {
   return new URL(path, new URL(APP_BASE, window.location.href)).href;
+}
+
+function apiUrl(path) {
+  return USE_REMOTE ? `${API_BASE}${path}` : path;
+}
+
+function mediaUrl(url) {
+  if (!url) return url;
+  if (/^https?:\/\//.test(url)) return url;
+  if (USE_REMOTE) return `${API_BASE}${url.startsWith('/') ? '' : '/'}${url}`;
+  if (STATIC_SITE) return staticAsset(String(url).replace(/^\//, ''));
+  return url;
 }
 
 function readClimateBaseline() {
@@ -443,7 +458,7 @@ async function saveSettings() {
     renderSettingsError();
     return;
   }
-  if (STATIC_SITE) {
+  if (DEMO_SITE) {
     state.prefs = { configured: true, crop_ids: [...draft.crops], market_codes: [...draft.markets], broadcast_options: [...draft.options], source: 'local' };
     state.firstVisit = false;
     state.selectedCrops = new Set(draft.crops);
@@ -464,7 +479,7 @@ async function saveSettings() {
   save.disabled = true;
   save.textContent = '儲存中…';
   try {
-    const response = await fetch('/api/preferences', {
+    const response = await fetch(apiUrl('/api/preferences'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -554,7 +569,7 @@ function renderCrops() {
     return `
       <button type="button" class="crop-card ${selected ? 'is-selected' : ''}" data-crop-id="${escapeHtml(crop.id)}" aria-pressed="${selected}">
         <span class="crop-check" aria-hidden="true">${selected ? '✓' : ''}</span>
-        <img src="${escapeHtml(STATIC_SITE ? staticAsset(String(crop.image || '').replace(/^\//, '')) : crop.image)}" alt="${escapeHtml(crop.name_zh)}" loading="lazy" />
+        <img src="${escapeHtml(mediaUrl(crop.image))}" alt="${escapeHtml(crop.name_zh)}" loading="lazy" />
         <span class="crop-name">${escapeHtml(crop.name_zh)}</span>
         <span class="crop-hakka">${escapeHtml(crop.name_hakka || '')}</span>
         <span class="crop-meta">${escapeHtml(crop.category || '')} ${seasonBadge(crop)}</span>
@@ -823,7 +838,7 @@ function renderClimate() {
 
 async function loadClimateBaselines() {
   try {
-    const response = await fetch(STATIC_SITE ? staticAsset('data/climate_baselines.json') : '/api/climate/baselines');
+    const response = await fetch(DEMO_SITE ? staticAsset('data/climate_baselines.json') : apiUrl('/api/climate/baselines'));
     if (!response.ok) throw new Error('無法取得氣候比較基準');
     state.climateBaselineData = await response.json();
     renderClimate();
@@ -961,8 +976,8 @@ async function loadPreferences() {
   const localReady = hasLocalSetup();
   let prefs = null;
   try {
-    if (STATIC_SITE) throw new Error('static');
-    const response = await fetch(`/api/preferences?client_id=${encodeURIComponent(state.clientId || '')}`);
+    if (DEMO_SITE) throw new Error('static');
+    const response = await fetch(apiUrl(`/api/preferences?client_id=${encodeURIComponent(state.clientId || '')}`));
     if (!response.ok) throw new Error('無法讀取偏好設定');
     prefs = await response.json();
   } catch (_) {
@@ -991,7 +1006,7 @@ async function loadPreferences() {
 
 async function loadBootstrap() {
   resetTts();
-  const response = await fetch(STATIC_SITE ? staticAsset('data/bootstrap.json') : '/api/bootstrap');
+  const response = await fetch(DEMO_SITE ? staticAsset('data/bootstrap.json') : apiUrl('/api/bootstrap'));
   if (!response.ok) throw new Error('無法取得初始資料');
   const data = await response.json();
   state.crops = data.crops || [];
@@ -1103,7 +1118,7 @@ function renderTtsStatus() {
   const retry = container.querySelector('#tts-retry');
   if (retry) {
     retry.addEventListener('click', () => {
-      if (STATIC_SITE) {
+      if (DEMO_SITE) {
         if (state.broadcast?.audio_url) playAudio(state.broadcast.audio_url);
         else setNotice('展示版無法重新合成語音。', 'info');
         return;
@@ -1131,7 +1146,7 @@ async function startTtsJob(text) {
   renderActionBar();
   startTtsClock();
   try {
-    const response = await fetch('/api/tts/jobs', {
+    const response = await fetch(apiUrl('/api/tts/jobs'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text }),
@@ -1155,7 +1170,7 @@ async function pollTtsJob(jobId) {
   const tick = async () => {
     if (!state.ttsJob || state.ttsJob.id !== jobId) return;
     try {
-      const response = await fetch(`/api/tts/jobs/${jobId}`);
+      const response = await fetch(apiUrl(`/api/tts/jobs/${jobId}`));
       if (!response.ok) throw new Error('無法取得語音合成狀態');
       const job = await response.json();
       const startedAt = state.ttsJob.startedAt;
@@ -1163,7 +1178,7 @@ async function pollTtsJob(jobId) {
       state.ttsJob = { ...job, startedAt };
       if (job.status === 'done') {
         stopTtsClock();
-        if (state.broadcast) state.broadcast.audio_url = job.audio_url;
+        if (state.broadcast) state.broadcast.audio_url = mediaUrl(job.audio_url);
         renderTtsStatus();
         renderActionBar();
         if (job.audio_url) playAudio(job.audio_url);
@@ -1191,7 +1206,7 @@ async function pollTtsJob(jobId) {
 }
 
 async function playBroadcast() {
-  if (STATIC_SITE) {
+  if (DEMO_SITE) {
     if (!state.selectedCrops.size || !state.selectedMarkets.size) {
       setNotice('請先選擇作物與市場。', 'warn');
       return;
@@ -1238,7 +1253,7 @@ async function playBroadcast() {
   renderActionBar();
   renderScript();
   try {
-    const response = await fetch('/api/broadcast', {
+    const response = await fetch(apiUrl('/api/broadcast'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1364,15 +1379,13 @@ function renderPreviewProgress() {
 
 async function pollPreviewStatus() {
   try {
-    const response = await fetch(STATIC_SITE ? staticAsset('data/preview_items.json') : '/api/tts/preview');
+    const response = await fetch(DEMO_SITE ? staticAsset('data/preview_items.json') : apiUrl('/api/tts/preview'));
     if (!response.ok) throw new Error('無法取得語音狀態');
     const data = await response.json();
     state.previewSounds = data.items || {};
-    if (STATIC_SITE) {
-      Object.values(state.previewSounds).forEach((entry) => {
-        if (entry?.audio_url && !/^https?:\/\//.test(entry.audio_url)) entry.audio_url = staticAsset(entry.audio_url);
-      });
-    }
+    Object.values(state.previewSounds).forEach((entry) => {
+      if (entry?.audio_url) entry.audio_url = mediaUrl(entry.audio_url);
+    });
     state.previewProgress = {
       ready: data.ready || 0,
       total: data.total || 0,
@@ -1382,7 +1395,7 @@ async function pollPreviewStatus() {
   } catch (_) {
     // 保持上次狀態，不打斷瀏覽。
   }
-  if (STATIC_SITE) {
+  if (DEMO_SITE) {
     state.previewPollTimer = null;
     return;
   }
@@ -1403,12 +1416,12 @@ async function prewarmPreviewSounds() {
   ].filter(Boolean);
   if (!texts.length) return;
   state.previewExpected = texts.length;
-  if (STATIC_SITE) {
+  if (DEMO_SITE) {
     await pollPreviewStatus();
     return;
   }
   try {
-    const response = await fetch('/api/tts/preview', {
+    const response = await fetch(apiUrl('/api/tts/preview'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ texts }),
@@ -1416,6 +1429,9 @@ async function prewarmPreviewSounds() {
     if (!response.ok) throw new Error('無法啟動語音預錄');
     const data = await response.json();
     state.previewSounds = data.items || {};
+    Object.values(state.previewSounds).forEach((entry) => {
+      if (entry?.audio_url) entry.audio_url = mediaUrl(entry.audio_url);
+    });
     state.previewProgress = {
       ready: data.ready || 0,
       total: data.total || 0,
@@ -1429,14 +1445,14 @@ async function prewarmPreviewSounds() {
 }
 
 async function refreshData() {
-  if (STATIC_SITE) {
+  if (DEMO_SITE) {
     setNotice('展示版不支援重新抓取資料。', 'info');
     return;
   }
   state.loading = true;
   renderActionBar();
   try {
-    const response = await fetch('/api/refresh', { method: 'POST' });
+    const response = await fetch(apiUrl('/api/refresh'), { method: 'POST' });
     if (!response.ok) throw new Error('重新整理失敗');
     state.notice = null;
     await loadBootstrap();
@@ -1459,9 +1475,9 @@ async function boot() {
     await loadBootstrap();
     loadClimateBaselines();
     prewarmPreviewSounds();
-    if (STATIC_SITE) setNotice('這是靜態展示版：資料為快照，廣播稿與語音為範例檔。', 'info');
+    if (DEMO_SITE) setNotice('這是靜態展示版：資料為快照，廣播稿與語音為範例檔。', 'info');
   } catch (error) {
-    setNotice(STATIC_SITE ? `${error.message}。` : `${error.message}。請確認後端已在 http://127.0.0.1:8000 啟動。`, 'error');
+    setNotice(DEMO_SITE ? `${error.message}。` : `${error.message}。請確認後端已在 http://127.0.0.1:8000 啟動。`, 'error');
   }
 }
 
