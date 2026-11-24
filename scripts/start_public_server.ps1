@@ -40,7 +40,7 @@ $tunnelErr = Join-Path $workDir 'tunnel.err.log'
 Write-Host '啟動 Cloudflare Tunnel…'
 $tunnel = Start-Process `
   -FilePath $cloudflared `
-  -ArgumentList @('tunnel', '--no-autoupdate', '--url', 'http://127.0.0.1:8000') `
+  -ArgumentList @('tunnel', '--no-autoupdate', '--protocol', 'http2', '--url', 'http://127.0.0.1:8000') `
   -RedirectStandardOutput $tunnelOut `
   -RedirectStandardError $tunnelErr `
   -PassThru
@@ -53,7 +53,7 @@ for ($i = 0; $i -lt 60; $i++) {
       $logs += Get-Content $file -Raw -ErrorAction SilentlyContinue
     }
   }
-  $match = [regex]::Match(($logs -join "`n"), 'https://[a-z0-9-]+\.trycloudflare\.com')
+  $match = [regex]::Match(($logs -join "`n"), 'https://(?!api\.)[a-z0-9-]+\.trycloudflare\.com')
   if ($match.Success) {
     $url = $match.Value
     break
