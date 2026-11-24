@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: rural-sustainability-broadcast
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT --app-dir backend"
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: CWA_API_KEY
+        sync: false
+      - key: TARGET_COUNTY
+        value: "臺中市"
+      - key: TARGET_TOWN
+        value: "東勢區"
+      - key: PRESET_MARKET_CODES
+        value: "423,400,420"
+      - key: PRICE_TTL_SECONDS
+        value: "600"
+      - key: WEATHER_TTL_SECONDS
+        value: "1800"
+      - key: LOW_TEMP_THRESHOLD
+        value: "12"
+      - key: HEAVY_RAIN_POP_THRESHOLD
+        value: "70"
+      - key: PREF_HASH_SALT
+        generateValue: true
+      - key: PREF_TRUST_PROXY
+        value: "1"
+      - key: TTS_ENGINE
+        value: "voxhakka_space"
+      - key: TTS_SPACE
+        value: "united-link/taiwanese-hakka-tts"
+      - key: TTS_MODEL
+        value: "yourtts-htia-240704"
+      - key: TTS_DIALECT
+        value: "dapu"
+      - key: TTS_SPEAKER
+        value: "宋涵葳"
+      - key: TTS_SPEED
+        value: "1.0"
+      - key: TTS_TIMEOUT_SECONDS
+        value: "900"
+      - key: TTS_CACHE_ENABLED
+        value: "1"
