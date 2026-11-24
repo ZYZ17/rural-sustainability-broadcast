@@ -6,7 +6,9 @@
 
 <https://zyz17.github.io/rural-sustainability-broadcast/>
 
-GitHub Pages 版本為靜態展示版，使用固定資料快照與預錄語音；即時抓取與重新合成語音請用本機後端。
+目前網站已接到本機後端（透過 Cloudflare Tunnel），可即時抓取資料並合成大埔腔語音。公開 API 網址每次重啟隧道都會改變；請以 `scripts/start_public_server.ps1` 執行後印出的網址為準，並保持電腦、後端與隧道進程開啟。
+
+若沒有啟動公開伺服器，網站會自動退回靜態展示版（固定資料快照與預錄語音）。
 
 ## 功能
 
@@ -31,6 +33,22 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 開啟 <http://127.0.0.1:8000/>。後端同時提供前端靜態檔案與 API，不需另外啟動 Vite。
 
 `.env` 含 API 金鑰，已加入 `.gitignore`，不會上傳。
+
+## 用本機電腦對外提供服務
+
+在專案根目錄執行：
+
+```powershell
+./scripts/start_public_server.ps1
+```
+
+腳本會自動啟動後端（若尚未啟動）、下載並執行 Cloudflare Tunnel、取得公開網址，並更新 GitHub Pages 的 `API_BASE` 後觸發部署。不需要申請 Cloudflare 帳號，也不需要設定路由器端口轉發。
+
+注意：
+
+- 電腦關機、休眠或關閉 tunnel 進程後，公開網址立即失效
+- 每次重新執行都會產生新的網址，腳本會自動更新網站
+- 若要停止，關閉 `cloudflared` 進程即可
 
 ## 專案結構
 
