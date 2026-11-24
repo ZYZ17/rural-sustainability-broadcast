@@ -1,0 +1,1041 @@
+{
+  "crops": [
+    {
+      "id": "sweet_persimmon",
+      "name_zh": "甜柿",
+      "name_hakka": "甜柿",
+      "hakka_status": "draft",
+      "api_names": [
+        "柿子-甜柿",
+        "甜柿"
+      ],
+      "season_months": [
+        10,
+        11,
+        12
+      ],
+      "category": "水果",
+      "image": "/crops/sweet_persimmon.svg",
+      "note": "東勢代表性秋季作物"
+    },
+    {
+      "id": "red_persimmon",
+      "name_zh": "紅柿",
+      "name_hakka": "紅柿",
+      "hakka_status": "draft",
+      "api_names": [
+        "柿子-紅柿",
+        "紅柿"
+      ],
+      "season_months": [
+        9,
+        10,
+        11
+      ],
+      "category": "水果",
+      "image": "/crops/red_persimmon.svg",
+      "note": ""
+    },
+    {
+      "id": "ponkan",
+      "name_zh": "椪柑",
+      "name_hakka": "椪柑",
+      "hakka_status": "draft",
+      "api_names": [
+        "椪柑"
+      ],
+      "season_months": [
+        11,
+        12,
+        1
+      ],
+      "category": "水果",
+      "image": "/crops/ponkan.svg",
+      "note": "東勢冬季主力"
+    },
+    {
+      "id": "tankan",
+      "name_zh": "桶柑",
+      "name_hakka": "桶柑",
+      "hakka_status": "draft",
+      "api_names": [
+        "桶柑",
+        "雜柑-桶柑"
+      ],
+      "season_months": [
+        1,
+        2,
+        3
+      ],
+      "category": "水果",
+      "image": "/crops/tankan.svg",
+      "note": ""
+    },
+    {
+      "id": "murcott",
+      "name_zh": "茂谷柑",
+      "name_hakka": "茂谷柑",
+      "hakka_status": "draft",
+      "api_names": [
+        "茂谷柑",
+        "雜柑-茂谷柑"
+      ],
+      "season_months": [
+        1,
+        2,
+        3
+      ],
+      "category": "水果",
+      "image": "/crops/murcott.svg",
+      "note": ""
+    },
+    {
+      "id": "pear_baodao",
+      "name_zh": "寶島甘露梨",
+      "name_hakka": "甘露梨",
+      "hakka_status": "draft",
+      "api_names": [
+        "梨-寶島甘露梨",
+        "寶島甘露梨"
+      ],
+      "season_months": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "category": "水果",
+      "image": "/crops/pear_baodao.svg",
+      "note": "東勢高接梨品種"
+    },
+    {
+      "id": "pear_xinxing",
+      "name_zh": "新興梨",
+      "name_hakka": "新興梨",
+      "hakka_status": "draft",
+      "api_names": [
+        "梨-新興梨",
+        "新興梨"
+      ],
+      "season_months": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "category": "水果",
+      "image": "/crops/pear_xinxing.svg",
+      "note": "東勢高接梨品種"
+    },
+    {
+      "id": "pear_4029",
+      "name_zh": "4029梨",
+      "name_hakka": "4029梨",
+      "hakka_status": "draft",
+      "api_names": [
+        "梨-4029",
+        "梨-4029梨",
+        "4029梨"
+      ],
+      "season_months": [
+        6,
+        7,
+        8
+      ],
+      "category": "水果",
+      "image": "/crops/pear_4029.svg",
+      "note": "東勢高接梨品種"
+    },
+    {
+      "id": "peach",
+      "name_zh": "水蜜桃",
+      "name_hakka": "水蜜桃",
+      "hakka_status": "draft",
+      "api_names": [
+        "水蜜桃",
+        "桃-水蜜桃"
+      ],
+      "season_months": [
+        5,
+        6,
+        7
+      ],
+      "category": "水果",
+      "image": "/crops/peach.svg",
+      "note": "非產季時無批發行情"
+    },
+    {
+      "id": "plum",
+      "name_zh": "桃接李",
+      "name_hakka": "李仔",
+      "hakka_status": "draft",
+      "api_names": [
+        "李-桃接李",
+        "桃接李",
+        "李-李子",
+        "李子"
+      ],
+      "season_months": [
+        4,
+        5,
+        6
+      ],
+      "category": "水果",
+      "image": "/crops/plum.svg",
+      "note": ""
+    },
+    {
+      "id": "mei",
+      "name_zh": "梅",
+      "name_hakka": "梅仔",
+      "hakka_status": "draft",
+      "api_names": [
+        "梅",
+        "青梅",
+        "梅子"
+      ],
+      "season_months": [
+        3,
+        4,
+        5
+      ],
+      "category": "水果",
+      "image": "/crops/mei.svg",
+      "note": ""
+    },
+    {
+      "id": "longan",
+      "name_zh": "龍眼",
+      "name_hakka": "龍眼",
+      "hakka_status": "draft",
+      "api_names": [
+        "龍眼",
+        "龍眼-粉殼"
+      ],
+      "season_months": [
+        7,
+        8
+      ],
+      "category": "水果",
+      "image": "/crops/longan.svg",
+      "note": "東勢常見粉殼"
+    },
+    {
+      "id": "lychee",
+      "name_zh": "荔枝",
+      "name_hakka": "荔枝",
+      "hakka_status": "draft",
+      "api_names": [
+        "荔枝",
+        "荔枝-黑葉",
+        "荔枝-玉荷包"
+      ],
+      "season_months": [
+        5,
+        6,
+        7
+      ],
+      "category": "水果",
+      "image": "/crops/lychee.svg",
+      "note": ""
+    },
+    {
+      "id": "avocado",
+      "name_zh": "酪梨",
+      "name_hakka": "酪梨",
+      "hakka_status": "draft",
+      "api_names": [
+        "酪梨"
+      ],
+      "season_months": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "category": "水果",
+      "image": "/crops/avocado.svg",
+      "note": "進口品不列入本地行情"
+    },
+    {
+      "id": "bamboo_gui",
+      "name_zh": "桂竹筍",
+      "name_hakka": "桂竹筍",
+      "hakka_status": "draft",
+      "api_names": [
+        "桂竹筍",
+        "桶筍-桂竹筍",
+        "熟筍-桂竹筍",
+        "竹筍-桂竹筍"
+      ],
+      "season_months": [
+        4,
+        5,
+        6
+      ],
+      "category": "蔬菜",
+      "image": "/crops/bamboo_gui.svg",
+      "note": ""
+    },
+    {
+      "id": "bamboo_green",
+      "name_zh": "綠竹筍",
+      "name_hakka": "綠竹筍",
+      "hakka_status": "draft",
+      "api_names": [
+        "綠竹筍",
+        "竹筍-綠竹筍",
+        "桶筍-綠竹筍"
+      ],
+      "season_months": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "category": "蔬菜",
+      "image": "/crops/bamboo_green.svg",
+      "note": ""
+    },
+    {
+      "id": "coffee",
+      "name_zh": "咖啡",
+      "name_hakka": "咖啡",
+      "hakka_status": "draft",
+      "api_names": [
+        "咖啡",
+        "咖啡豆"
+      ],
+      "season_months": [
+        10,
+        11,
+        12,
+        1
+      ],
+      "category": "特用作物",
+      "image": "/crops/coffee.svg",
+      "note": "東勢山區新興作物"
+    },
+    {
+      "id": "mushroom",
+      "name_zh": "香菇",
+      "name_hakka": "香菇",
+      "hakka_status": "draft",
+      "api_names": [
+        "香菇",
+        "濕香菇",
+        "乾香菇"
+      ],
+      "season_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "category": "菇類",
+      "image": "/crops/mushroom.svg",
+      "note": ""
+    }
+  ],
+  "markets": [
+    {
+      "code": "423",
+      "name": "東勢區",
+      "api_names": [
+        "東勢鎮"
+      ],
+      "crop_count": 13,
+      "row_count": 25,
+      "preset": true
+    },
+    {
+      "code": "400",
+      "name": "臺中市",
+      "api_names": [
+        "臺中市",
+        "臺中市場"
+      ],
+      "crop_count": 582,
+      "row_count": 1086,
+      "preset": true
+    },
+    {
+      "code": "420",
+      "name": "豐原區",
+      "api_names": [
+        "豐原區"
+      ],
+      "crop_count": 134,
+      "row_count": 214,
+      "preset": true
+    },
+    {
+      "code": "241",
+      "name": "三重區",
+      "api_names": [
+        "三重區"
+      ],
+      "crop_count": 279,
+      "row_count": 505,
+      "preset": false
+    },
+    {
+      "code": "540",
+      "name": "南投市",
+      "api_names": [
+        "南投市"
+      ],
+      "crop_count": 15,
+      "row_count": 30,
+      "preset": false
+    },
+    {
+      "code": "600",
+      "name": "嘉義市",
+      "api_names": [
+        "嘉義市"
+      ],
+      "crop_count": 33,
+      "row_count": 62,
+      "preset": false
+    },
+    {
+      "code": "260",
+      "name": "宜蘭市",
+      "api_names": [
+        "宜蘭市"
+      ],
+      "crop_count": 78,
+      "row_count": 135,
+      "preset": false
+    },
+    {
+      "code": "900",
+      "name": "屏東市",
+      "api_names": [
+        "屏東市"
+      ],
+      "crop_count": 147,
+      "row_count": 258,
+      "preset": false
+    },
+    {
+      "code": "514",
+      "name": "彰化市場",
+      "api_names": [
+        "彰化市場",
+        "溪湖鎮"
+      ],
+      "crop_count": 347,
+      "row_count": 731,
+      "preset": false
+    },
+    {
+      "code": "220",
+      "name": "板橋區",
+      "api_names": [
+        "板橋區"
+      ],
+      "crop_count": 267,
+      "row_count": 485,
+      "preset": false
+    },
+    {
+      "code": "338",
+      "name": "桃農",
+      "api_names": [
+        "桃農"
+      ],
+      "crop_count": 200,
+      "row_count": 370,
+      "preset": false
+    },
+    {
+      "code": "512",
+      "name": "永靖鄉",
+      "api_names": [
+        "永靖鄉"
+      ],
+      "crop_count": 8,
+      "row_count": 15,
+      "preset": false
+    },
+    {
+      "code": "109",
+      "name": "臺北一",
+      "api_names": [
+        "臺北一"
+      ],
+      "crop_count": 364,
+      "row_count": 675,
+      "preset": false
+    },
+    {
+      "code": "104",
+      "name": "臺北二",
+      "api_names": [
+        "臺北二"
+      ],
+      "crop_count": 336,
+      "row_count": 632,
+      "preset": false
+    },
+    {
+      "code": "105",
+      "name": "臺北市場",
+      "api_names": [
+        "臺北市場"
+      ],
+      "crop_count": 558,
+      "row_count": 1419,
+      "preset": false
+    },
+    {
+      "code": "700",
+      "name": "臺南市場",
+      "api_names": [
+        "臺南市場"
+      ],
+      "crop_count": 309,
+      "row_count": 466,
+      "preset": false
+    },
+    {
+      "code": "930",
+      "name": "臺東市",
+      "api_names": [
+        "臺東市"
+      ],
+      "crop_count": 23,
+      "row_count": 23,
+      "preset": false
+    },
+    {
+      "code": "950",
+      "name": "花蓮市",
+      "api_names": [
+        "花蓮市"
+      ],
+      "crop_count": 88,
+      "row_count": 190,
+      "preset": false
+    },
+    {
+      "code": "648",
+      "name": "西螺鎮",
+      "api_names": [
+        "西螺鎮"
+      ],
+      "crop_count": 50,
+      "row_count": 148,
+      "preset": false
+    },
+    {
+      "code": "800",
+      "name": "高雄市",
+      "api_names": [
+        "高雄市",
+        "高雄市場"
+      ],
+      "crop_count": 543,
+      "row_count": 1063,
+      "preset": false
+    },
+    {
+      "code": "830",
+      "name": "鳳山區",
+      "api_names": [
+        "鳳山區"
+      ],
+      "crop_count": 92,
+      "row_count": 223,
+      "preset": false
+    }
+  ],
+  "preset_market_codes": [
+    "423",
+    "400",
+    "420"
+  ],
+  "price_date": "2026-11-24",
+  "price_generated_at": "2026-11-24T20:19:40+08:00",
+  "market_count": 21,
+  "weather": {
+    "generated_at": "2026-11-24T20:09:38+08:00",
+    "county": "臺中市",
+    "town": "東勢區",
+    "warnings": [
+      {
+        "phenomena": "陸上強風",
+        "significance": "特報",
+        "start": "2026-11-24T16:31:00+08:00",
+        "end": "2026-11-25T23:00:00+08:00",
+        "kind": "strong_wind"
+      }
+    ],
+    "typhoon": null,
+    "week": {
+      "location": "東勢區",
+      "days": [
+        {
+          "date": "2026-11-24",
+          "min_t": 15.0,
+          "max_t": 17.0,
+          "pop": 20.0,
+          "wx": [
+            "多雲時陰"
+          ],
+          "description": "多雲時陰。降雨機率20%。溫度攝氏15至17度。寒冷至稍有寒意。偏北風 風速3級(每秒4公尺)。相對濕度85%。"
+        },
+        {
+          "date": "2026-11-25",
+          "min_t": 15.0,
+          "max_t": 22.0,
+          "pop": 30.0,
+          "wx": [
+            "多雲時陰短暫雨",
+            "陰時多雲"
+          ],
+          "description": "多雲時陰短暫雨。降雨機率30%。溫度攝氏17至19度。稍有寒意。東南風 風速<= 1級(每秒1公尺)。相對濕度88%。"
+        },
+        {
+          "date": "2026-11-26",
+          "min_t": 17.0,
+          "max_t": 22.0,
+          "pop": 40.0,
+          "wx": [
+            "多雲",
+            "陰短暫雨"
+          ],
+          "description": "多雲。降雨機率20%。溫度攝氏18至19度。稍有寒意。東北風 風速<= 1級(每秒1公尺)。相對濕度88%。"
+        },
+        {
+          "date": "2026-11-27",
+          "min_t": 18.0,
+          "max_t": 26.0,
+          "pop": 10.0,
+          "wx": [
+            "多雲"
+          ],
+          "description": "多雲。降雨機率10%。溫度攝氏18至21度。稍有寒意至舒適。東北風 風速2級(每秒2公尺)。相對濕度87%。"
+        },
+        {
+          "date": "2026-11-28",
+          "min_t": 13.0,
+          "max_t": 24.0,
+          "pop": null,
+          "wx": [
+            "晴時多雲"
+          ],
+          "description": "晴時多雲。溫度攝氏13至17度。寒冷至稍有寒意。東北風 風速2級(每秒3公尺)。相對濕度69%。"
+        },
+        {
+          "date": "2026-11-29",
+          "min_t": 13.0,
+          "max_t": 23.0,
+          "pop": null,
+          "wx": [
+            "晴時多雲"
+          ],
+          "description": "晴時多雲。溫度攝氏15至18度。寒冷至稍有寒意。東南風 風速2級(每秒2公尺)。相對濕度84%。"
+        },
+        {
+          "date": "2026-11-30",
+          "min_t": 15.0,
+          "max_t": 24.0,
+          "pop": null,
+          "wx": [
+            "多雲時晴",
+            "晴時多雲"
+          ],
+          "description": "晴時多雲。溫度攝氏15至18度。寒冷至稍有寒意。偏東風 風速2級(每秒2公尺)。相對濕度85%。"
+        },
+        {
+          "date": "2026-12-01",
+          "min_t": 15.0,
+          "max_t": 24.0,
+          "pop": null,
+          "wx": [
+            "晴時多雲"
+          ],
+          "description": "晴時多雲。溫度攝氏16至19度。稍有寒意。東南風 風速2級(每秒2公尺)。相對濕度84%。"
+        }
+      ]
+    },
+    "now36h": {
+      "county": "臺中市",
+      "periods": [
+        {
+          "start": "2026-11-24 18:00:00",
+          "end": "2026-11-25 06:00:00",
+          "wx": "多雲時陰",
+          "pop": "20",
+          "min_t": "17",
+          "max_t": "20",
+          "ci": "稍有寒意"
+        },
+        {
+          "start": "2026-11-25 06:00:00",
+          "end": "2026-11-25 18:00:00",
+          "wx": "陰時多雲",
+          "pop": "20",
+          "min_t": "17",
+          "max_t": "24",
+          "ci": "稍有寒意至舒適"
+        },
+        {
+          "start": "2026-11-25 18:00:00",
+          "end": "2026-11-26 06:00:00",
+          "wx": "多雲時陰短暫雨",
+          "pop": "30",
+          "min_t": "19",
+          "max_t": "22",
+          "ci": "稍有寒意至舒適"
+        }
+      ]
+    },
+    "alerts": [
+      {
+        "kind": "strong_wind",
+        "level": "特報",
+        "text": "陸上強風特報，影響到11月25號23點",
+        "source": "cwa_warning"
+      }
+    ],
+    "summary": "今天臺中市多雲時陰，氣溫17到20度，降雨機率20%。明天東勢區多雲時陰短暫雨、陰時多雲，15到22度，降雨機率30%。",
+    "errors": []
+  },
+  "climate": {
+    "generated_at": "2026-11-24T20:09:44+08:00",
+    "station": {
+      "id": "467490",
+      "name": "臺中"
+    },
+    "periods": {
+      "monthly": {
+        "label": "上月",
+        "current": "2026-10",
+        "previous_year": "2025-10"
+      },
+      "mtd": {
+        "label": "本月至今",
+        "current": "2026-11-01",
+        "as_of": "2026-11-23"
+      },
+      "normals": {
+        "month": 11,
+        "period": "1991-2020"
+      },
+      "yearly": {
+        "current_year": 2026,
+        "previous_year": 2025,
+        "as_of": "2026-11-23"
+      }
+    },
+    "modes": {
+      "monthly": {
+        "current": {
+          "start": "2026-10-01",
+          "end": "2026-10-31",
+          "days": 31,
+          "as_of": "2026-10-31",
+          "mean_t": 26.9,
+          "rainfall": 51.0
+        },
+        "previous_year": {
+          "start": "2025-10-01",
+          "end": "2025-10-31",
+          "days": 31,
+          "as_of": "2025-10-31",
+          "mean_t": 27.7,
+          "rainfall": 7.0
+        },
+        "delta_mean_t": -0.8,
+        "delta_rainfall": 44.0
+      },
+      "mtd": {
+        "current": {
+          "start": "2026-11-01",
+          "end": "2026-11-23",
+          "days": 23,
+          "as_of": "2026-11-23",
+          "mean_t": 23.6,
+          "rainfall": 19.0
+        },
+        "previous_year": {
+          "start": "2025-11-01",
+          "end": "2025-11-23",
+          "days": 23,
+          "as_of": "2025-11-23",
+          "mean_t": 23.7,
+          "rainfall": 2.0
+        },
+        "delta_mean_t": -0.1,
+        "delta_rainfall": 17.0
+      },
+      "normals": {
+        "current": {
+          "start": "2026-11-01",
+          "end": "2026-11-23",
+          "days": 23,
+          "as_of": "2026-11-23",
+          "mean_t": 23.6,
+          "rainfall": 19.0
+        },
+        "normal": {
+          "station_name": "臺中",
+          "period_start": 1991,
+          "period_end": 2020,
+          "month": 11,
+          "mean_t": 22.6,
+          "rainfall": 23.8,
+          "rainfall_full": 23.8,
+          "rainfall_prorated": 18.2
+        },
+        "delta_mean_t": 1.0,
+        "delta_rainfall": 0.8
+      },
+      "yearly": {
+        "series": [
+          {
+            "month": 1,
+            "current": {
+              "start": "2026-01-01",
+              "end": "2026-01-31",
+              "days": 31,
+              "as_of": "2026-01-31",
+              "mean_t": 17.4,
+              "rainfall": 2.0
+            },
+            "previous": {
+              "start": "2025-01-01",
+              "end": "2025-01-31",
+              "days": 31,
+              "as_of": "2025-01-31",
+              "mean_t": 16.3,
+              "rainfall": 27.0
+            }
+          },
+          {
+            "month": 2,
+            "current": {
+              "start": "2026-02-01",
+              "end": "2026-02-28",
+              "days": 28,
+              "as_of": "2026-02-28",
+              "mean_t": 19.5,
+              "rainfall": 6.0
+            },
+            "previous": {
+              "start": "2025-02-01",
+              "end": "2025-02-28",
+              "days": 28,
+              "as_of": "2025-02-28",
+              "mean_t": 17.1,
+              "rainfall": 78.5
+            }
+          },
+          {
+            "month": 3,
+            "current": {
+              "start": "2026-03-01",
+              "end": "2026-03-31",
+              "days": 31,
+              "as_of": "2026-03-31",
+              "mean_t": 21.2,
+              "rainfall": 10.5
+            },
+            "previous": {
+              "start": "2025-03-01",
+              "end": "2025-03-31",
+              "days": 31,
+              "as_of": "2025-03-31",
+              "mean_t": 19.7,
+              "rainfall": 110.0
+            }
+          },
+          {
+            "month": 4,
+            "current": {
+              "start": "2026-04-01",
+              "end": "2026-04-30",
+              "days": 30,
+              "as_of": "2026-04-30",
+              "mean_t": 25.1,
+              "rainfall": 232.5
+            },
+            "previous": {
+              "start": "2025-04-01",
+              "end": "2025-04-30",
+              "days": 30,
+              "as_of": "2025-04-30",
+              "mean_t": 23.8,
+              "rainfall": 80.5
+            }
+          },
+          {
+            "month": 5,
+            "current": {
+              "start": "2026-05-01",
+              "end": "2026-05-31",
+              "days": 31,
+              "as_of": "2026-05-31",
+              "mean_t": 27.3,
+              "rainfall": 68.0
+            },
+            "previous": {
+              "start": "2025-05-01",
+              "end": "2025-05-31",
+              "days": 31,
+              "as_of": "2025-05-31",
+              "mean_t": 26.9,
+              "rainfall": 178.5
+            }
+          },
+          {
+            "month": 6,
+            "current": {
+              "start": "2026-06-01",
+              "end": "2026-06-30",
+              "days": 30,
+              "as_of": "2026-06-30",
+              "mean_t": 27.9,
+              "rainfall": 639.0
+            },
+            "previous": {
+              "start": "2025-06-01",
+              "end": "2025-06-30",
+              "days": 30,
+              "as_of": "2025-06-30",
+              "mean_t": 28.9,
+              "rainfall": 194.5
+            }
+          },
+          {
+            "month": 7,
+            "current": {
+              "start": "2026-07-01",
+              "end": "2026-07-31",
+              "days": 31,
+              "as_of": "2026-07-31",
+              "mean_t": 29.4,
+              "rainfall": 292.5
+            },
+            "previous": {
+              "start": "2025-07-01",
+              "end": "2025-07-31",
+              "days": 31,
+              "as_of": "2025-07-31",
+              "mean_t": 28.3,
+              "rainfall": 1177.5
+            }
+          },
+          {
+            "month": 8,
+            "current": {
+              "start": "2026-08-01",
+              "end": "2026-08-31",
+              "days": 31,
+              "as_of": "2026-08-31",
+              "mean_t": 28.7,
+              "rainfall": 343.5
+            },
+            "previous": {
+              "start": "2025-08-01",
+              "end": "2025-08-31",
+              "days": 31,
+              "as_of": "2025-08-31",
+              "mean_t": 28.7,
+              "rainfall": 266.0
+            }
+          },
+          {
+            "month": 9,
+            "current": {
+              "start": "2026-09-01",
+              "end": "2026-09-30",
+              "days": 30,
+              "as_of": "2026-09-30",
+              "mean_t": 28.3,
+              "rainfall": 39.0
+            },
+            "previous": {
+              "start": "2025-09-01",
+              "end": "2025-09-30",
+              "days": 30,
+              "as_of": "2025-09-30",
+              "mean_t": 28.7,
+              "rainfall": 151.5
+            }
+          },
+          {
+            "month": 10,
+            "current": {
+              "start": "2026-10-01",
+              "end": "2026-10-31",
+              "days": 31,
+              "as_of": "2026-10-31",
+              "mean_t": 26.9,
+              "rainfall": 51.0
+            },
+            "previous": {
+              "start": "2025-10-01",
+              "end": "2025-10-31",
+              "days": 31,
+              "as_of": "2025-10-31",
+              "mean_t": 27.7,
+              "rainfall": 7.0
+            }
+          },
+          {
+            "month": 11,
+            "current": {
+              "start": "2026-11-01",
+              "end": "2026-11-30",
+              "days": 23,
+              "as_of": "2026-11-23",
+              "mean_t": 23.6,
+              "rainfall": 19.0
+            },
+            "previous": {
+              "start": "2025-11-01",
+              "end": "2025-11-30",
+              "days": 30,
+              "as_of": "2025-11-30",
+              "mean_t": 23.1,
+              "rainfall": 2.0
+            }
+          },
+          {
+            "month": 12,
+            "current": null,
+            "previous": {
+              "start": "2025-12-01",
+              "end": "2025-12-31",
+              "days": 31,
+              "as_of": "2025-12-31",
+              "mean_t": 19.9,
+              "rainfall": 4.0
+            }
+          }
+        ]
+      }
+    },
+    "sources": {
+      "observation": "中央氣象署 CODiS 氣候觀測資料查詢服務（日報表）",
+      "normals": "中央氣象署 Open Data C-B0027-001（1991–2020 月平均）"
+    },
+    "errors": []
+  },
+  "server_time": "2026-11-24T20:26:22+08:00"
+}

@@ -6,6 +6,12 @@ const CLIMATE_BASELINE_OPTIONS = [
 ];
 const CLIMATE_BASELINE_KEY = 'climate_baseline';
 const PREVIEW_SPEECH_KEY = 'broadcast_preview_speech';
+const STATIC_SITE = window.location.hostname.endsWith('github.io') || new URLSearchParams(window.location.search).has('static');
+const APP_BASE = new URL('.', window.location.href).pathname;
+
+function staticAsset(path) {
+  return new URL(path, new URL(APP_BASE, window.location.href)).href;
+}
 
 function readClimateBaseline() {
   try {
@@ -437,6 +443,22 @@ async function saveSettings() {
     renderSettingsError();
     return;
   }
+  if (STATIC_SITE) {
+    state.prefs = { configured: true, crop_ids: [...draft.crops], market_codes: [...draft.markets], broadcast_options: [...draft.options], source: 'local' };
+    state.firstVisit = false;
+    state.selectedCrops = new Set(draft.crops);
+    state.selectedMarkets = new Set(draft.markets);
+    state.broadcastOptions = normalizeBroadcastOptions([...draft.options]);
+    writeLocalPreferences([...state.selectedCrops], [...state.selectedMarkets], [...state.broadcastOptions]);
+    state.broadcast = null;
+    resetTts();
+    closeSettings(true);
+    renderStatus();
+    renderScript();
+    renderActionBar();
+    setNotice('設定已儲存（展示版）。', 'info');
+    return;
+  }
   const save = document.querySelector('#settings-save');
   const originalText = save.textContent;
   save.disabled = true;
@@ -801,7 +823,7 @@ function renderClimate() {
 
 async function loadClimateBaselines() {
   try {
-    const response = await fetch('/api/climate/baselines');
+    const response = await fetch(STATIC_SITE ? staticAsset('data/climate_baselines.json') : '/api/climate/baselines');
     if (!response.ok) throw new Error('無法取得氣候比較基準');
     state.climateBaselineData = await response.json();
     renderClimate();
@@ -939,6 +961,7 @@ async function loadPreferences() {
   const localReady = hasLocalSetup();
   let prefs = null;
   try {
+    if (STATIC_SITE) throw new Error('static');
     const response = await fetch(`/api/preferences?client_id=${encodeURIComponent(state.clientId || '')}`);
     if (!response.ok) throw new Error('無法讀取偏好設定');
     prefs = await response.json();
@@ -968,7 +991,7 @@ async function loadPreferences() {
 
 async function loadBootstrap() {
   resetTts();
-  const response = await fetch('/api/bootstrap');
+  const response = await fetch(STATIC_SITE ? staticAsset('data/bootstrap.json') : '/api/bootstrap');
   if (!response.ok) throw new Error('無法取得初始資料');
   const data = await response.json();
   state.crops = data.crops || [];
@@ -1080,6 +1103,11 @@ function renderTtsStatus() {
   const retry = container.querySelector('#tts-retry');
   if (retry) {
     retry.addEventListener('click', () => {
+      if (STATIC_SITE) {
+        if (state.broadcast?.audio_url) playAudio(state.broadcast.audio_url);
+        else setNotice('展示版無法重新合成語音。', 'info');
+        return;
+      }
       if (state.broadcast?.tts_text) startTtsJob(state.broadcast.tts_text);
     });
   }
@@ -1163,6 +1191,37 @@ async function pollTtsJob(jobId) {
 }
 
 async function playBroadcast() {
+  if (STATIC_SITE) {
+    if (!state.selectedCrops.size || !state.selectedMarkets.size) {
+      setNotice('請先選擇作物與市場。', 'warn');
+      return;
+    }
+    if (state.broadcast?.audio_url) {
+      playAudio(state.broadcast.audio_url);
+      return;
+    }
+    state.loading = true;
+    renderActionBar();
+    renderScript();
+    try {
+      const response = await fetch(staticAsset('data/broadcast.json'));
+      if (!response.ok) throw new Error('無法載入展示廣播稿');
+      state.broadcast = await response.json();
+      if (state.broadcast.audio_url && !/^https?:\/\//.test(state.broadcast.audio_url)) {
+        state.broadcast.audio_url = staticAsset(state.broadcast.audio_url);
+      }
+      state.loading = false;
+      renderScript();
+      renderActionBar();
+      setNotice('展示版：廣播稿與語音為預先產生的範例檔。', 'info');
+      if (state.broadcast.audio_url) playAudio(state.broadcast.audio_url);
+    } catch (error) {
+      state.loading = false;
+      renderActionBar();
+      setNotice(error.message, 'error');
+    }
+    return;
+  }
   if (!state.selectedCrops.size) {
     setNotice('請先至少選一種作物。', 'warn');
     return;
@@ -1305,10 +1364,15 @@ function renderPreviewProgress() {
 
 async function pollPreviewStatus() {
   try {
-    const response = await fetch('/api/tts/preview');
+    const response = await fetch(STATIC_SITE ? staticAsset('data/preview_items.json') : '/api/tts/preview');
     if (!response.ok) throw new Error('無法取得語音狀態');
     const data = await response.json();
     state.previewSounds = data.items || {};
+    if (STATIC_SITE) {
+      Object.values(state.previewSounds).forEach((entry) => {
+        if (entry?.audio_url && !/^https?:\/\//.test(entry.audio_url)) entry.audio_url = staticAsset(entry.audio_url);
+      });
+    }
     state.previewProgress = {
       ready: data.ready || 0,
       total: data.total || 0,
@@ -1317,6 +1381,10 @@ async function pollPreviewStatus() {
     renderPreviewProgress();
   } catch (_) {
     // 保持上次狀態，不打斷瀏覽。
+  }
+  if (STATIC_SITE) {
+    state.previewPollTimer = null;
+    return;
   }
   if (state.previewProgress.running) {
     state.previewPollTimer = setTimeout(pollPreviewStatus, 3000);
@@ -1335,6 +1403,10 @@ async function prewarmPreviewSounds() {
   ].filter(Boolean);
   if (!texts.length) return;
   state.previewExpected = texts.length;
+  if (STATIC_SITE) {
+    await pollPreviewStatus();
+    return;
+  }
   try {
     const response = await fetch('/api/tts/preview', {
       method: 'POST',
@@ -1357,6 +1429,10 @@ async function prewarmPreviewSounds() {
 }
 
 async function refreshData() {
+  if (STATIC_SITE) {
+    setNotice('展示版不支援重新抓取資料。', 'info');
+    return;
+  }
   state.loading = true;
   renderActionBar();
   try {
@@ -1383,8 +1459,9 @@ async function boot() {
     await loadBootstrap();
     loadClimateBaselines();
     prewarmPreviewSounds();
+    if (STATIC_SITE) setNotice('這是靜態展示版：資料為快照，廣播稿與語音為範例檔。', 'info');
   } catch (error) {
-    setNotice(`${error.message}。請確認後端已在 http://127.0.0.1:8000 啟動。`, 'error');
+    setNotice(STATIC_SITE ? `${error.message}。` : `${error.message}。請確認後端已在 http://127.0.0.1:8000 啟動。`, 'error');
   }
 }
 

@@ -1,0 +1,284 @@
+{
+  "segments": [
+    {
+      "type": "intro",
+      "text": "各位鄉親大家好，今晡日係十一月二十四號，拜二。農曆十月十六。"
+    },
+    {
+      "type": "weather",
+      "kind": "strong_wind",
+      "level": "特報",
+      "text": "陸上強風特報，影響到11月25號23點。"
+    },
+    {
+      "type": "price",
+      "text": "甜柿，臺中市，上價一百七十八元，中價一百一十三點二元，下價七十四元，平均價一百一十三點九元，交易量一萬九千九百零五公斤，比昨晡日起六點六元。",
+      "data": {
+        "crop_id": "sweet_persimmon",
+        "crop_name": "柿子-甜柿",
+        "market_code": "400",
+        "market_name": "臺中市",
+        "market_display": "臺中市",
+        "avg": 113.9,
+        "avg_raw": 113.9,
+        "upper": 178.0,
+        "middle": 113.2,
+        "lower": 74.0,
+        "volume": 19905.0,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 107.3,
+        "prev_avg_raw": 107.29999999999998,
+        "change": 6.6,
+        "change_raw": 6.600000000000023,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "柿子-甜柿",
+            "crop_code": "Z4",
+            "market_code": "400",
+            "market_name": "臺中市",
+            "market_display": "臺中市",
+            "upper": 178.0,
+            "middle": 113.2,
+            "lower": 74.0,
+            "avg": 113.9,
+            "volume": 19905.0,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "price",
+      "text": "甜柿，豐原區，上價一百一十一點四元，中價九十點一元，下價四十五點八元，平均價八十五點五元，交易量二百一十七點五公斤，比昨晡日落十四點六元。",
+      "data": {
+        "crop_id": "sweet_persimmon",
+        "crop_name": "柿子-甜柿",
+        "market_code": "420",
+        "market_name": "豐原區",
+        "market_display": "豐原區",
+        "avg": 85.5,
+        "avg_raw": 85.5,
+        "upper": 111.4,
+        "middle": 90.1,
+        "lower": 45.8,
+        "volume": 217.5,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 100.1,
+        "prev_avg_raw": 100.1,
+        "change": -14.6,
+        "change_raw": -14.599999999999994,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "柿子-甜柿",
+            "crop_code": "Z4",
+            "market_code": "420",
+            "market_name": "豐原區",
+            "market_display": "豐原區",
+            "upper": 111.4,
+            "middle": 90.1,
+            "lower": 45.8,
+            "avg": 85.5,
+            "volume": 217.5,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "price",
+      "text": "甜柿，東勢區，上價一百八十四點七元，中價一百零六點二元，下價六十點三元，平均價一百零六點六元，交易量一萬四千零三十五點八公斤，比昨晡日落五點九七元。",
+      "data": {
+        "crop_id": "sweet_persimmon",
+        "crop_name": "柿子-甜柿",
+        "market_code": "423",
+        "market_name": "東勢鎮",
+        "market_display": "東勢區",
+        "avg": 106.6,
+        "avg_raw": 106.6,
+        "upper": 184.7,
+        "middle": 106.2,
+        "lower": 60.3,
+        "volume": 14035.8,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 112.57,
+        "prev_avg_raw": 112.57,
+        "change": -5.97,
+        "change_raw": -5.969999999999999,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "柿子-甜柿",
+            "crop_code": "Z4",
+            "market_code": "423",
+            "market_name": "東勢鎮",
+            "market_display": "東勢區",
+            "upper": 184.7,
+            "middle": 106.2,
+            "lower": 60.3,
+            "avg": 106.6,
+            "volume": 14035.8,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "price",
+      "text": "紅柿，今晡日無行情。",
+      "data": {
+        "crop_id": "red_persimmon",
+        "name_zh": "紅柿"
+      }
+    },
+    {
+      "type": "price",
+      "text": "椪柑，臺中市，上價六十六點四元，中價四十六點三元，下價二十七點一元，平均價五十點五元，交易量十萬零九千四百六十八公斤，比昨晡日起零點七元。",
+      "data": {
+        "crop_id": "ponkan",
+        "crop_name": "椪柑",
+        "market_code": "400",
+        "market_name": "臺中市",
+        "market_display": "臺中市",
+        "avg": 50.5,
+        "avg_raw": 50.5,
+        "upper": 66.4,
+        "middle": 46.3,
+        "lower": 27.1,
+        "volume": 109468.0,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 49.8,
+        "prev_avg_raw": 49.8,
+        "change": 0.7,
+        "change_raw": 0.7000000000000028,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "椪柑",
+            "crop_code": "C1",
+            "market_code": "400",
+            "market_name": "臺中市",
+            "market_display": "臺中市",
+            "upper": 66.4,
+            "middle": 46.3,
+            "lower": 27.1,
+            "avg": 50.5,
+            "volume": 109468.0,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "price",
+      "text": "椪柑，豐原區，上價五十二點一元，中價四十四點一元，下價二十六點五元，平均價四十二點二元，交易量四千五百二十二點八公斤，比昨晡日落零點一元。",
+      "data": {
+        "crop_id": "ponkan",
+        "crop_name": "椪柑",
+        "market_code": "420",
+        "market_name": "豐原區",
+        "market_display": "豐原區",
+        "avg": 42.2,
+        "avg_raw": 42.2,
+        "upper": 52.1,
+        "middle": 44.1,
+        "lower": 26.5,
+        "volume": 4522.8,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 42.3,
+        "prev_avg_raw": 42.3,
+        "change": -0.1,
+        "change_raw": -0.09999999999999432,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "椪柑",
+            "crop_code": "C1",
+            "market_code": "420",
+            "market_name": "豐原區",
+            "market_display": "豐原區",
+            "upper": 52.1,
+            "middle": 44.1,
+            "lower": 26.5,
+            "avg": 42.2,
+            "volume": 4522.8,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "price",
+      "text": "椪柑，東勢區，上價五十五點五元，中價三十五點三元，下價十七點五元，平均價三十四點九二元，交易量一萬七千九百二十四點四公斤，比昨晡日落四點九二元。",
+      "data": {
+        "crop_id": "ponkan",
+        "crop_name": "椪柑",
+        "market_code": "423",
+        "market_name": "東勢鎮",
+        "market_display": "東勢區",
+        "avg": 34.92,
+        "avg_raw": 34.92,
+        "upper": 55.5,
+        "middle": 35.3,
+        "lower": 17.5,
+        "volume": 17924.4,
+        "date": "2026-11-24",
+        "imported": false,
+        "prev_avg": 39.84,
+        "prev_avg_raw": 39.84,
+        "change": -4.92,
+        "change_raw": -4.920000000000002,
+        "raw_row_count": 1,
+        "raw_rows": [
+          {
+            "crop_name": "椪柑",
+            "crop_code": "C1",
+            "market_code": "423",
+            "market_name": "東勢鎮",
+            "market_display": "東勢區",
+            "upper": 55.5,
+            "middle": 35.3,
+            "lower": 17.5,
+            "avg": 34.92,
+            "volume": 17924.4,
+            "date": "2026-11-24",
+            "imported": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "outro",
+      "text": "以上係今晡日个行情，祝大家順心。"
+    }
+  ],
+  "full_text": "各位鄉親大家好，今晡日係十一月二十四號，拜二。農曆十月十六。 陸上強風特報，影響到11月25號23點。 甜柿，臺中市，上價一百七十八元，中價一百一十三點二元，下價七十四元，平均價一百一十三點九元，交易量一萬九千九百零五公斤，比昨晡日起六點六元。 甜柿，豐原區，上價一百一十一點四元，中價九十點一元，下價四十五點八元，平均價八十五點五元，交易量二百一十七點五公斤，比昨晡日落十四點六元。 甜柿，東勢區，上價一百八十四點七元，中價一百零六點二元，下價六十點三元，平均價一百零六點六元，交易量一萬四千零三十五點八公斤，比昨晡日落五點九七元。 紅柿，今晡日無行情。 椪柑，臺中市，上價六十六點四元，中價四十六點三元，下價二十七點一元，平均價五十點五元，交易量十萬零九千四百六十八公斤，比昨晡日起零點七元。 椪柑，豐原區，上價五十二點一元，中價四十四點一元，下價二十六點五元，平均價四十二點二元，交易量四千五百二十二點八公斤，比昨晡日落零點一元。 椪柑，東勢區，上價五十五點五元，中價三十五點三元，下價十七點五元，平均價三十四點九二元，交易量一萬七千九百二十四點四公斤，比昨晡日落四點九二元。 以上係今晡日个行情，祝大家順心。",
+  "tts_text": "各位鄉親大家好，今晡日係十一月二十四號，拜二。農曆十月十六。陸上強風特報，影響到十一月二十五號二十三點。甜柿，臺中市，上價一百七十八元，中價一百一十三點二元，下價七十四元，平均價一百一十三點九元，交易量一萬九千九百零五公斤，比昨晡日起六點六元。甜柿，豐原區，上價一百一十一點四元，中價九十點一元，下價四十五點八元，平均價八十五點五元，交易量二百一十七點五公斤，比昨晡日落十四點六元。甜柿，東勢區，上價一百八十四點七元，中價一百零六點二元，下價六十點三元，平均價一百零六點六元，交易量一萬四千零三十五點八公斤，比昨晡日落五點九七元。紅柿，今晡日無行情。椪柑，臺中市，上價六十六點四元，中價四十六點三元，下價二十七點一元，平均價五十點五元，交易量十萬零九千四百六十八公斤，比昨晡日起零點七元。椪柑，豐原區，上價五十二點一元，中價四十四點一元，下價二十六點五元，平均價四十二點二元，交易量四千五百二十二點八公斤，比昨晡日落零點一元。椪柑，東勢區，上價五十五點五元，中價三十五點三元，下價十七點五元，平均價三十四點九二元，交易量一萬七千九百二十四點四公斤，比昨晡日落四點九二元。以上係今晡日个行情，祝大家順心。",
+  "trade_date": "2026-11-24",
+  "options": [
+    "upper",
+    "middle",
+    "lower",
+    "avg",
+    "volume",
+    "trend"
+  ],
+  "lunar_date": "農曆十月十六",
+  "solar_term": "",
+  "festival": null,
+  "generated_at": "2026-11-24T20:26:23+08:00",
+  "audio_url": "audio/broadcast.wav",
+  "weather_generated_at": "2026-11-24T20:09:38+08:00",
+  "weather_errors": []
+}
