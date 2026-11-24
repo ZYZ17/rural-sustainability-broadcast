@@ -7,7 +7,7 @@ import tempfile
 from pathlib import Path
 
 from dotenv import dotenv_values
-from huggingface_hub import HfApi
+from huggingface_hub import HfApi, get_token
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 REPO_ID = os.getenv("HF_SPACE_ID", "CYC1245556/rural-sustainability-broadcast-api")
@@ -42,9 +42,9 @@ def copy_tree(src: Path, dst: Path, include: set[str] | None = None) -> None:
 def build_context() -> Path:
     temp = Path(tempfile.mkdtemp(prefix="rural-broadcast-hf-space-"))
     space_files = PROJECT_ROOT / "hf_space"
-    shutil.copy2(space_files / "Dockerfile", temp / "Dockerfile")
     shutil.copy2(space_files / "README.md", temp / "README.md")
-    shutil.copy2(PROJECT_ROOT / "backend" / "requirements.txt", temp / "requirements.txt")
+    shutil.copy2(space_files / "app.py", temp / "app.py")
+    shutil.copy2(space_files / "requirements.txt", temp / "requirements.txt")
 
     copy_tree(PROJECT_ROOT / "backend" / "app", temp / "backend" / "app")
     copy_tree(PROJECT_ROOT / "data", temp / "data", include={
@@ -62,7 +62,7 @@ def build_context() -> Path:
 
 def main() -> None:
     api = HfApi()
-    token = os.getenv("HF_TOKEN") or api.token
+    token = os.getenv("HF_TOKEN") or get_token() or api.token
     if not token:
         raise SystemExit("請先執行 `hf auth login`，或設定 HF_TOKEN 環境變數。")
 
@@ -76,7 +76,7 @@ def main() -> None:
     api.create_repo(
         repo_id=REPO_ID,
         repo_type="space",
-        space_sdk="docker",
+        space_sdk="gradio",
         space_hardware="cpu-basic",
         private=False,
         exist_ok=True,
