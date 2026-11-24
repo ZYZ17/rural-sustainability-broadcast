@@ -70,9 +70,8 @@ Write-Host "公開 API 網址：$url"
 Write-Host "Cloudflare 進程 ID：$($tunnel.Id)"
 
 if (-not $SkipDeploy) {
-  gh variable set API_BASE --repo ZYZ17/rural-sustainability-broadcast --body $url
-  gh workflow run deploy-pages.yml --repo ZYZ17/rural-sustainability-broadcast
-  Write-Host '已更新 GitHub Pages 設定並觸發部署。'
+  & (Join-Path $PSScriptRoot 'deploy_pages_branch.ps1') -ApiBase $url
+  Write-Host '已更新 GitHub Pages 網站。'
 }
 
 Write-Host ''
