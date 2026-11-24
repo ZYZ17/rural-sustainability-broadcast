@@ -6,7 +6,19 @@
 
 <https://zyz17.github.io/rural-sustainability-broadcast/>
 
-GitHub Pages 版本為靜態展示版，使用固定資料快照與預錄語音；即時抓取與重新合成語音請用本機後端。
+網站目前已透過 **Tailscale Funnel** 連到本機後端，可即時抓取資料並合成大埔腔語音。固定 API 網址為 `https://zyz.taild8c73f.ts.net`。
+
+需保持本機後端與 Tailscale Funnel 開啟；關閉後網站會退回靜態展示版。若要重新啟動 Funnel：
+
+```powershell
+tailscale funnel --bg 8000
+```
+
+若 Funnel 網址改變，重新部署網站：
+
+```powershell
+./scripts/deploy_pages_branch.ps1 -ApiBase "https://新網址"
+```
 
 ## 功能
 
