@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "accent": "大埔腔",
+    "status": "draft",
+    "updated": "2026-11-12",
+    "note": "數詞與固定句為草稿，需母語者校稿；作物名以華語字形輸入 TTS，實際腔調由模型決定。"
+  },
+  "numbers": {
+    "0": "零",
+    "1": "一",
+    "2": "二",
+    "3": "三",
+    "4": "四",
+    "5": "五",
+    "6": "六",
+    "7": "七",
+    "8": "八",
+    "9": "九",
+    "10": "十",
+    "100": "百",
+    "1000": "千",
+    "10000": "萬"
+  },
+  "terms": {
+    "today": {"zh": "今天", "hakka_dapu": "今晡日", "status": "draft"},
+    "yesterday": {"zh": "昨天", "hakka_dapu": "昨晡日", "status": "draft"},
+    "is": {"zh": "是", "hakka_dapu": "係", "status": "draft"},
+    "market": {"zh": "市場", "hakka_dapu": "市場", "status": "draft"},
+    "average_price": {"zh": "平均價", "hakka_dapu": "平均價", "status": "draft"},
+    "up": {"zh": "漲", "hakka_dapu": "起", "status": "draft"},
+    "down": {"zh": "跌", "hakka_dapu": "落", "status": "draft"},
+    "flat": {"zh": "持平", "hakka_dapu": "持平", "status": "draft"},
+    "no_data": {"zh": "無行情", "hakka_dapu": "無行情", "status": "draft"},
+    "weather": {"zh": "天氣", "hakka_dapu": "天氣", "status": "draft"},
+    "low_temperature": {"zh": "低溫", "hakka_dapu": "低溫", "status": "draft"},
+    "typhoon": {"zh": "颱風", "hakka_dapu": "颱風", "status": "draft"},
+    "heavy_rain": {"zh": "豪雨", "hakka_dapu": "豪雨", "status": "draft"},
+    "strong_wind": {"zh": "強風", "hakka_dapu": "強風", "status": "draft"},
+    "please_note": {"zh": "請注意", "hakka_dapu": "請注意", "status": "draft"},
+    "thank_you": {"zh": "謝謝", "hakka_dapu": "恁仔細", "status": "draft"}
+  },
+  "review_queue": [
+    "今晡日係{date}",
+    "先來報告天氣",
+    "平均價{price}元",
+    "比昨晡日{trend}",
+    "今晡日無行情",
+    "以上係今晡日个行情，祝大家順心",
+    "所有作物名稱的大埔腔發音"
+  ]
+}

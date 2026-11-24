@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="4029梨">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eab308"/>
+      <stop offset="1" stop-color="#854d0e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="28" fill="url(#g)"/>
+  <circle cx="200" cy="122" r="72" fill="#ffffff" fill-opacity="0.93"/>
+  <text x="200" y="150" text-anchor="middle" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="70" font-weight="700" fill="#854d0e">4</text>
+  <text x="200" y="248" text-anchor="middle" font-family="'Noto Sans TC','Microsoft JhengHei',sans-serif" font-size="30" font-weight="700" fill="#ffffff">4029梨</text>
+</svg>

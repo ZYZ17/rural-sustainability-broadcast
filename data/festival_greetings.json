@@ -1,0 +1,110 @@
+{
+  "_meta": {
+    "status": "draft",
+    "note": "客語用字與腔調待母語者校稿；{zodiac} 會依當日農曆年替換，除夕改用隔年生肖。"
+  },
+  "festivals": [
+    {
+      "key": "spring_festival",
+      "name_zh": "春節",
+      "match": { "lunar": { "month": 1, "day": 1 } },
+      "greetings": [
+        "新年快樂！",
+        "{zodiac}年行大運！",
+        "祝大家新年平安，食好穿好。"
+      ]
+    },
+    {
+      "key": "god_of_heaven_birthday",
+      "name_zh": "天公生",
+      "match": { "lunar": { "month": 1, "day": 9 } },
+      "greetings": [
+        "天公生快樂！",
+        "祝大家拜天公平安，闔家順遂。"
+      ]
+    },
+    {
+      "key": "lantern_festival",
+      "name_zh": "元宵",
+      "match": { "lunar": { "month": 1, "day": 15 } },
+      "greetings": [
+        "元宵快樂！",
+        "祝大家賞燈圓滿，鬧熱一晡。"
+      ]
+    },
+    {
+      "key": "dragon_boat_festival",
+      "name_zh": "端午",
+      "match": { "lunar": { "month": 5, "day": 5 } },
+      "greetings": [
+        "端午安康！",
+        "祝大家食粽仔平安，熱天無病痛。"
+      ]
+    },
+    {
+      "key": "master_lu_birthday",
+      "name_zh": "巧聖先師聖誕",
+      "match": { "lunar": { "month": 5, "day": 24 } },
+      "greetings": [
+        "巧聖先師聖誕快樂！",
+        "祝大家做工平安，手路順、生意興隆。"
+      ]
+    },
+    {
+      "key": "qixi_festival",
+      "name_zh": "七夕",
+      "match": { "lunar": { "month": 7, "day": 7 } },
+      "greetings": [
+        "七夕快樂！",
+        "祝大家乞巧得巧，感情甜甜。"
+      ]
+    },
+    {
+      "key": "ghost_festival",
+      "name_zh": "中元",
+      "match": { "lunar": { "month": 7, "day": 15 } },
+      "greetings": [
+        "中元平安！",
+        "祝大家普渡順遂，庄頭無災無難。"
+      ]
+    },
+    {
+      "key": "mid_autumn_festival",
+      "name_zh": "中秋",
+      "match": { "lunar": { "month": 8, "day": 15 } },
+      "greetings": [
+        "中秋快樂！",
+        "祝大家月圓人團圓，食月餅、食柚子。"
+      ]
+    },
+    {
+      "key": "double_ninth_festival",
+      "name_zh": "重陽",
+      "match": { "lunar": { "month": 9, "day": 9 } },
+      "greetings": [
+        "重陽快樂！",
+        "祝大家登高平安，健康長壽。"
+      ]
+    },
+    {
+      "key": "winter_solstice",
+      "name_zh": "冬至",
+      "match": { "solar_term": "冬至" },
+      "greetings": [
+        "冬至快樂！",
+        "祝大家食湯圓，一家人大團圓。"
+      ]
+    },
+    {
+      "key": "lunar_new_year_eve",
+      "name_zh": "除夕",
+      "match": { "lunar_eve": true },
+      "zodiac_source": "next",
+      "greetings": [
+        "除夕快樂！",
+        "祝大家圍爐平安，守歲迎新。",
+        "迎接{zodiac}年，好運連連！"
+      ]
+    }
+  ]
+}

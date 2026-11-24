@@ -1,0 +1,200 @@
+[
+  {
+    "id": "sweet_persimmon",
+    "name_zh": "甜柿",
+    "name_hakka": "甜柿",
+    "hakka_status": "draft",
+    "api_names": ["柿子-甜柿", "甜柿"],
+    "season_months": [10, 11, 12],
+    "category": "水果",
+    "image": "/crops/sweet_persimmon.svg",
+    "note": "東勢代表性秋季作物"
+  },
+  {
+    "id": "red_persimmon",
+    "name_zh": "紅柿",
+    "name_hakka": "紅柿",
+    "hakka_status": "draft",
+    "api_names": ["柿子-紅柿", "紅柿"],
+    "season_months": [9, 10, 11],
+    "category": "水果",
+    "image": "/crops/red_persimmon.svg",
+    "note": ""
+  },
+  {
+    "id": "ponkan",
+    "name_zh": "椪柑",
+    "name_hakka": "椪柑",
+    "hakka_status": "draft",
+    "api_names": ["椪柑"],
+    "season_months": [11, 12, 1],
+    "category": "水果",
+    "image": "/crops/ponkan.svg",
+    "note": "東勢冬季主力"
+  },
+  {
+    "id": "tankan",
+    "name_zh": "桶柑",
+    "name_hakka": "桶柑",
+    "hakka_status": "draft",
+    "api_names": ["桶柑", "雜柑-桶柑"],
+    "season_months": [1, 2, 3],
+    "category": "水果",
+    "image": "/crops/tankan.svg",
+    "note": ""
+  },
+  {
+    "id": "murcott",
+    "name_zh": "茂谷柑",
+    "name_hakka": "茂谷柑",
+    "hakka_status": "draft",
+    "api_names": ["茂谷柑", "雜柑-茂谷柑"],
+    "season_months": [1, 2, 3],
+    "category": "水果",
+    "image": "/crops/murcott.svg",
+    "note": ""
+  },
+  {
+    "id": "pear_baodao",
+    "name_zh": "寶島甘露梨",
+    "name_hakka": "甘露梨",
+    "hakka_status": "draft",
+    "api_names": ["梨-寶島甘露梨", "寶島甘露梨"],
+    "season_months": [7, 8, 9, 10],
+    "category": "水果",
+    "image": "/crops/pear_baodao.svg",
+    "note": "東勢高接梨品種"
+  },
+  {
+    "id": "pear_xinxing",
+    "name_zh": "新興梨",
+    "name_hakka": "新興梨",
+    "hakka_status": "draft",
+    "api_names": ["梨-新興梨", "新興梨"],
+    "season_months": [6, 7, 8, 9],
+    "category": "水果",
+    "image": "/crops/pear_xinxing.svg",
+    "note": "東勢高接梨品種"
+  },
+  {
+    "id": "pear_4029",
+    "name_zh": "4029梨",
+    "name_hakka": "4029梨",
+    "hakka_status": "draft",
+    "api_names": ["梨-4029", "梨-4029梨", "4029梨"],
+    "season_months": [6, 7, 8],
+    "category": "水果",
+    "image": "/crops/pear_4029.svg",
+    "note": "東勢高接梨品種"
+  },
+  {
+    "id": "peach",
+    "name_zh": "水蜜桃",
+    "name_hakka": "水蜜桃",
+    "hakka_status": "draft",
+    "api_names": ["水蜜桃", "桃-水蜜桃"],
+    "season_months": [5, 6, 7],
+    "category": "水果",
+    "image": "/crops/peach.svg",
+    "note": "非產季時無批發行情"
+  },
+  {
+    "id": "plum",
+    "name_zh": "桃接李",
+    "name_hakka": "李仔",
+    "hakka_status": "draft",
+    "api_names": ["李-桃接李", "桃接李", "李-李子", "李子"],
+    "season_months": [4, 5, 6],
+    "category": "水果",
+    "image": "/crops/plum.svg",
+    "note": ""
+  },
+  {
+    "id": "mei",
+    "name_zh": "梅",
+    "name_hakka": "梅仔",
+    "hakka_status": "draft",
+    "api_names": ["梅", "青梅", "梅子"],
+    "season_months": [3, 4, 5],
+    "category": "水果",
+    "image": "/crops/mei.svg",
+    "note": ""
+  },
+  {
+    "id": "longan",
+    "name_zh": "龍眼",
+    "name_hakka": "龍眼",
+    "hakka_status": "draft",
+    "api_names": ["龍眼", "龍眼-粉殼"],
+    "season_months": [7, 8],
+    "category": "水果",
+    "image": "/crops/longan.svg",
+    "note": "東勢常見粉殼"
+  },
+  {
+    "id": "lychee",
+    "name_zh": "荔枝",
+    "name_hakka": "荔枝",
+    "hakka_status": "draft",
+    "api_names": ["荔枝", "荔枝-黑葉", "荔枝-玉荷包"],
+    "season_months": [5, 6, 7],
+    "category": "水果",
+    "image": "/crops/lychee.svg",
+    "note": ""
+  },
+  {
+    "id": "avocado",
+    "name_zh": "酪梨",
+    "name_hakka": "酪梨",
+    "hakka_status": "draft",
+    "api_names": ["酪梨"],
+    "season_months": [6, 7, 8, 9, 10],
+    "category": "水果",
+    "image": "/crops/avocado.svg",
+    "note": "進口品不列入本地行情"
+  },
+  {
+    "id": "bamboo_gui",
+    "name_zh": "桂竹筍",
+    "name_hakka": "桂竹筍",
+    "hakka_status": "draft",
+    "api_names": ["桂竹筍", "桶筍-桂竹筍", "熟筍-桂竹筍", "竹筍-桂竹筍"],
+    "season_months": [4, 5, 6],
+    "category": "蔬菜",
+    "image": "/crops/bamboo_gui.svg",
+    "note": ""
+  },
+  {
+    "id": "bamboo_green",
+    "name_zh": "綠竹筍",
+    "name_hakka": "綠竹筍",
+    "hakka_status": "draft",
+    "api_names": ["綠竹筍", "竹筍-綠竹筍", "桶筍-綠竹筍"],
+    "season_months": [5, 6, 7, 8, 9],
+    "category": "蔬菜",
+    "image": "/crops/bamboo_green.svg",
+    "note": ""
+  },
+  {
+    "id": "coffee",
+    "name_zh": "咖啡",
+    "name_hakka": "咖啡",
+    "hakka_status": "draft",
+    "api_names": ["咖啡", "咖啡豆"],
+    "season_months": [10, 11, 12, 1],
+    "category": "特用作物",
+    "image": "/crops/coffee.svg",
+    "note": "東勢山區新興作物"
+  },
+  {
+    "id": "mushroom",
+    "name_zh": "香菇",
+    "name_hakka": "香菇",
+    "hakka_status": "draft",
+    "api_names": ["香菇", "濕香菇", "乾香菇"],
+    "season_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "category": "菇類",
+    "image": "/crops/mushroom.svg",
+    "note": ""
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "status": "draft",
+    "note": "客語用字與腔調待母語者校稿；目前以華語字形搭配客語常用詞輸入 TTS。"
+  },
+  "intro": "各位鄉親大家好，今晡日係{date}。",
+  "trade_date": "行情日期：{date}。",
+  "weather_alert": "{text}。",
+  "weather_summary": "{text}",
+  "price": "{crop}，{market}{details}{trend}。",
+  "no_price": "{crop}，今晡日無行情。",
+  "outro": "以上係今晡日个行情，祝大家順心。"
+}

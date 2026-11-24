@@ -1,0 +1,215 @@
+[
+  {
+    "code": "423",
+    "name": "東勢區",
+    "api_names": [
+      "東勢鎮"
+    ],
+    "crop_count": 13,
+    "row_count": 25,
+    "preset": true
+  },
+  {
+    "code": "400",
+    "name": "臺中市",
+    "api_names": [
+      "臺中市",
+      "臺中市場"
+    ],
+    "crop_count": 582,
+    "row_count": 1086,
+    "preset": true
+  },
+  {
+    "code": "420",
+    "name": "豐原區",
+    "api_names": [
+      "豐原區"
+    ],
+    "crop_count": 134,
+    "row_count": 214,
+    "preset": true
+  },
+  {
+    "code": "241",
+    "name": "三重區",
+    "api_names": [
+      "三重區"
+    ],
+    "crop_count": 279,
+    "row_count": 505,
+    "preset": false
+  },
+  {
+    "code": "540",
+    "name": "南投市",
+    "api_names": [
+      "南投市"
+    ],
+    "crop_count": 15,
+    "row_count": 30,
+    "preset": false
+  },
+  {
+    "code": "600",
+    "name": "嘉義市",
+    "api_names": [
+      "嘉義市"
+    ],
+    "crop_count": 33,
+    "row_count": 62,
+    "preset": false
+  },
+  {
+    "code": "260",
+    "name": "宜蘭市",
+    "api_names": [
+      "宜蘭市"
+    ],
+    "crop_count": 78,
+    "row_count": 135,
+    "preset": false
+  },
+  {
+    "code": "900",
+    "name": "屏東市",
+    "api_names": [
+      "屏東市"
+    ],
+    "crop_count": 147,
+    "row_count": 258,
+    "preset": false
+  },
+  {
+    "code": "514",
+    "name": "彰化市場",
+    "api_names": [
+      "彰化市場",
+      "溪湖鎮"
+    ],
+    "crop_count": 347,
+    "row_count": 731,
+    "preset": false
+  },
+  {
+    "code": "220",
+    "name": "板橋區",
+    "api_names": [
+      "板橋區"
+    ],
+    "crop_count": 267,
+    "row_count": 485,
+    "preset": false
+  },
+  {
+    "code": "338",
+    "name": "桃農",
+    "api_names": [
+      "桃農"
+    ],
+    "crop_count": 200,
+    "row_count": 370,
+    "preset": false
+  },
+  {
+    "code": "512",
+    "name": "永靖鄉",
+    "api_names": [
+      "永靖鄉"
+    ],
+    "crop_count": 8,
+    "row_count": 15,
+    "preset": false
+  },
+  {
+    "code": "109",
+    "name": "臺北一",
+    "api_names": [
+      "臺北一"
+    ],
+    "crop_count": 364,
+    "row_count": 675,
+    "preset": false
+  },
+  {
+    "code": "104",
+    "name": "臺北二",
+    "api_names": [
+      "臺北二"
+    ],
+    "crop_count": 336,
+    "row_count": 632,
+    "preset": false
+  },
+  {
+    "code": "105",
+    "name": "臺北市場",
+    "api_names": [
+      "臺北市場"
+    ],
+    "crop_count": 558,
+    "row_count": 1419,
+    "preset": false
+  },
+  {
+    "code": "700",
+    "name": "臺南市場",
+    "api_names": [
+      "臺南市場"
+    ],
+    "crop_count": 309,
+    "row_count": 466,
+    "preset": false
+  },
+  {
+    "code": "930",
+    "name": "臺東市",
+    "api_names": [
+      "臺東市"
+    ],
+    "crop_count": 23,
+    "row_count": 23,
+    "preset": false
+  },
+  {
+    "code": "950",
+    "name": "花蓮市",
+    "api_names": [
+      "花蓮市"
+    ],
+    "crop_count": 88,
+    "row_count": 190,
+    "preset": false
+  },
+  {
+    "code": "648",
+    "name": "西螺鎮",
+    "api_names": [
+      "西螺鎮"
+    ],
+    "crop_count": 50,
+    "row_count": 148,
+    "preset": false
+  },
+  {
+    "code": "800",
+    "name": "高雄市",
+    "api_names": [
+      "高雄市",
+      "高雄市場"
+    ],
+    "crop_count": 543,
+    "row_count": 1063,
+    "preset": false
+  },
+  {
+    "code": "830",
+    "name": "鳳山區",
+    "api_names": [
+      "鳳山區"
+    ],
+    "crop_count": 92,
+    "row_count": 223,
+    "preset": false
+  }
+]

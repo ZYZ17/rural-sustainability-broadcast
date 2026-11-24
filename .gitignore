@@ -1,0 +1,16 @@
+backend/.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+frontend/dist/
+data/snapshots/
+data/tts_samples/*.wav
+data/tts_samples/*.mp3
+data/tts_samples/*.json
+data/preferences.json
+data/preferences.json.tmp
+.mcp-mail.lock
+.DS_Store
+*.log
