@@ -1312,7 +1312,7 @@ async function pollTtsJob(jobId) {
         await fadeOutWaitingMusic();
         state.transitioning = false;
         if (!state.ttsJob || state.ttsJob.id !== jobId) return;
-        if (job.audio_url) playAudio(job.audio_url);
+        if (job.audio_url) playAudio(mediaUrl(job.audio_url));
         return;
       }
       if (job.status === 'error') {
@@ -1444,6 +1444,8 @@ function togglePlayback() {
 
 async function playAudio(url) {
   if (state.voiceStarting) return;
+  const src = mediaUrl(url);
+  if (!src) return;
   state.voiceStarting = true;
   if (state.audio) state.audio.pause();
   const music = state.music;
@@ -1456,7 +1458,7 @@ async function playAudio(url) {
       await fadeOutWaitingMusic();
       if (state.music !== music) return; // 等待期間已被取消或重新設定
     }
-    startVoiceAudio(url);
+    startVoiceAudio(src);
   } finally {
     state.transitioning = false;
     state.voiceStarting = false;
