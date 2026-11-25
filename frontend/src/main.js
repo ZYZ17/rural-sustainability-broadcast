@@ -101,6 +101,7 @@ const state = {
   music: null,
   musicPausedForVoice: false,
   transitioning: false,
+  voiceStarting: false,
   ttsJob: null,
   ttsTimer: null,
   ttsClock: null,
@@ -1437,8 +1438,28 @@ function togglePlayback() {
   renderActionBar();
 }
 
-function playAudio(url) {
+async function playAudio(url) {
+  if (state.voiceStarting) return;
+  state.voiceStarting = true;
   if (state.audio) state.audio.pause();
+  const music = state.music;
+  try {
+    // 語音播出前，先讓還在播放的背景音樂退場；合成完成流程已先漸弱過，
+    // 這裡只處理「重聽」等音樂已恢復播放的情況。
+    if (music && !state.musicPausedForVoice && !music.paused) {
+      state.transitioning = true;
+      renderActionBar();
+      await fadeOutWaitingMusic();
+      if (state.music !== music) return; // 等待期間已被取消或重新設定
+    }
+    startVoiceAudio(url);
+  } finally {
+    state.transitioning = false;
+    state.voiceStarting = false;
+  }
+}
+
+function startVoiceAudio(url) {
   const audio = new Audio(url);
   audio.volume = 0;
   state.audio = audio;
