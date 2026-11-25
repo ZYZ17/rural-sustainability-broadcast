@@ -100,6 +100,7 @@ const state = {
   audio: null,
   music: null,
   musicPausedForVoice: false,
+  userPaused: false,
   transitioning: false,
   voiceStarting: false,
   ttsJob: null,
@@ -964,18 +965,21 @@ function renderActionBar() {
   if (!summary || !playButton || !label) return;
   const ttsRunning = isTtsRunning();
   const audio = state.audio;
-  const playing = Boolean(audio && !audio.paused && !audio.ended);
-  const paused = Boolean(audio && audio.paused && !audio.ended);
+  const music = state.music;
+  const voicePlaying = Boolean(audio && !audio.paused && !audio.ended);
+  const musicPlaying = Boolean(music && !music.paused && !state.musicPausedForVoice);
+  const playing = voicePlaying || musicPlaying;
+  const paused = !playing && Boolean((audio && audio.paused && !audio.ended) || (music && music.paused));
   summary.innerHTML = `已選 <strong>${state.selectedCrops.size}</strong> 種作物、<strong>${state.selectedMarkets.size}</strong> 個市場`;
   playButton.classList.toggle('is-speaking', playing);
   playButton.classList.toggle('is-paused', paused);
-  playButton.disabled = state.loading || ttsRunning || state.transitioning;
+  playButton.disabled = state.loading || state.transitioning;
   playButton.setAttribute('aria-pressed', String(playing));
   const action = paused ? '繼續播放' : (playing ? '暫停播放' : '播放廣播');
   playButton.setAttribute('aria-label', action);
   label.textContent = state.transitioning
     ? '準備播放…'
-    : (ttsRunning ? '合成中…' : (state.loading ? '產生中…' : action));
+    : (ttsRunning && !musicPlaying && !voicePlaying ? '合成中…' : (state.loading ? '產生中…' : action));
 }
 
 function renderNotice() {
@@ -1096,9 +1100,15 @@ function fadeVolume(audio, to, duration) {
 function startWaitingMusic() {
   stopWaitingMusic();
   const audio = new Audio(waitingMusicUrl());
-  audio.loop = true;
+  audio.loop = false;
   audio.volume = 0;
   state.music = audio;
+  audio.addEventListener('ended', () => {
+    if (state.music !== audio) return;
+    state.music = null;
+    state.musicPausedForVoice = false;
+    renderActionBar();
+  });
   audio.addEventListener('error', () => {
     if (state.music === audio) {
       stopWaitingMusic();
@@ -1127,6 +1137,7 @@ async function fadeOutWaitingMusic() {
 function resumeWaitingMusic() {
   const audio = state.music;
   if (!audio || !state.musicPausedForVoice) return;
+  if (state.userPaused) return; // 使用者按過暫停，不要自動接著播歌曲
   state.musicPausedForVoice = false;
   audio.volume = 0;
   audio.play().then(() => {
@@ -1142,6 +1153,7 @@ function stopWaitingMusic() {
   const audio = state.music;
   state.music = null;
   state.musicPausedForVoice = false;
+  state.userPaused = false;
   if (!audio) return;
   cancelVolumeFade(audio);
   audio.pause();
@@ -1414,28 +1426,41 @@ async function playBroadcast() {
 }
 
 function togglePlayback() {
-  if (state.loading || isTtsRunning() || state.transitioning) return;
+  if (state.loading || state.transitioning || state.voiceStarting) return;
   const audio = state.audio;
-  if (!audio || audio.ended) {
+  const music = state.music;
+  const voicePlaying = Boolean(audio && !audio.paused && !audio.ended);
+  const musicPlaying = Boolean(music && !music.paused && !state.musicPausedForVoice);
+
+  if (!voicePlaying && !musicPlaying) {
+    if (audio && audio.paused && !audio.ended) {
+      // 語音暫停中：續播語音；musicPausedForVoice 保持不變，語音結束再續歌曲。
+      state.userPaused = false;
+      audio.play().then(() => {
+        renderActionBar();
+      }).catch(() => {
+        renderActionBar();
+        setNotice('瀏覽器阻擋了播放，請再按一次播放。', 'warn');
+      });
+      return;
+    }
+    if (music && music.paused) {
+      state.userPaused = false;
+      state.musicPausedForVoice = false;
+      music.play().then(() => {
+        if (state.music === music) fadeVolume(music, WAITING_MUSIC_VOLUME, 1000);
+        renderActionBar();
+      }).catch(() => renderActionBar());
+      return;
+    }
     playBroadcast();
     return;
   }
-  if (audio.paused) {
-    audio.play().then(() => {
-      const music = state.music;
-      if (music && !state.musicPausedForVoice && music.paused) {
-        music.play().then(() => fadeVolume(music, WAITING_MUSIC_VOLUME, 1000)).catch(() => {});
-      }
-      renderActionBar();
-    }).catch(() => {
-      renderActionBar();
-      setNotice('瀏覽器阻擋了播放，請再按一次播放。', 'warn');
-    });
-    return;
-  }
-  audio.pause();
-  const music = state.music;
-  if (music && !state.musicPausedForVoice && !music.paused) {
+
+  // 暫停：語音與歌曲都壓住，且標記為使用者暫停，語音結束後不自動續歌曲。
+  state.userPaused = true;
+  if (voicePlaying) audio.pause();
+  if (musicPlaying) {
     cancelVolumeFade(music);
     music.pause();
   }
