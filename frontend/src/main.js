@@ -1466,6 +1466,7 @@ function playAudio(url) {
     if (state.audio !== audio) return;
     state.speaking = false;
     state.audio = null;
+    resumeWaitingMusic();
     renderActionBar();
     setNotice('瀏覽器阻擋了自動播放，請再按一次播放。', 'warn');
   });
