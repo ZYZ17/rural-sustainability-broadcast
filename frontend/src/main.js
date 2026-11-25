@@ -269,6 +269,13 @@ function renderShell() {
     </main>
     <div class="action-bar">
       <div class="action-summary" id="action-summary"></div>
+      <div class="action-controls">
+      <button type="button" class="replay-button" id="replay-button" aria-label="重播廣播內容" hidden>
+        <svg class="replay-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/>
+        </svg>
+        <span>重播廣播</span>
+      </button>
       <button type="button" class="play-button" id="play-button" aria-label="播放廣播" aria-pressed="false">
         <svg class="play-icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"/>
@@ -278,6 +285,7 @@ function renderShell() {
         </svg>
         <span id="play-label">播放廣播</span>
       </button>
+      </div>
     </div>
     <button type="button" class="settings-fab" id="settings-fab" aria-label="開啟設定">
       <svg class="settings-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -416,6 +424,7 @@ function bindEvents() {
     if (!state.previewSpeech) stopPreview();
   });
   document.querySelector('#play-button').addEventListener('click', togglePlayback);
+  document.querySelector('#replay-button').addEventListener('click', replayBroadcastOnly);
   document.querySelector('#refresh-button').addEventListener('click', refreshData);
   document.querySelector('#settings-fab').addEventListener('click', () => openSettings('edit'));
   document.querySelector('#settings-cancel').addEventListener('click', () => closeSettings());
@@ -962,7 +971,9 @@ function renderActionBar() {
   const summary = document.querySelector('#action-summary');
   const playButton = document.querySelector('#play-button');
   const label = document.querySelector('#play-label');
+  const replayButton = document.querySelector('#replay-button');
   if (!summary || !playButton || !label) return;
+  if (replayButton) replayButton.hidden = !state.broadcast?.audio_url;
   const ttsRunning = isTtsRunning();
   const audio = state.audio;
   const music = state.music;
@@ -1423,6 +1434,18 @@ async function playBroadcast() {
     renderActionBar();
     setNotice(error.message, 'error');
   }
+}
+
+function replayBroadcastOnly() {
+  if (state.loading || state.transitioning || state.voiceStarting || isTtsRunning()) return;
+  const url = state.broadcast?.audio_url;
+  if (!url) {
+    setNotice('尚無可重播的廣播語音。', 'info');
+    return;
+  }
+  // 重播只要廣播內容：停掉背景音樂，並避免語音結束後又自動接歌。
+  stopWaitingMusic();
+  playAudio(url);
 }
 
 function togglePlayback() {

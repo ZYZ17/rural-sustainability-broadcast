@@ -761,6 +761,45 @@ button {
   font-size: 1.1rem;
 }
 
+.action-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.replay-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 14px 22px;
+  background: #fff;
+  border: 1px solid var(--green);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(31, 77, 54, 0.1);
+  color: var(--green-deep);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.replay-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #f0f7f2;
+}
+
+.replay-button[hidden] {
+  display: none;
+}
+
+.replay-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
 .play-button {
   display: flex;
   gap: 10px;
@@ -1206,6 +1245,10 @@ body.settings-open {
 
   .action-summary {
     text-align: center;
+  }
+
+  .action-controls {
+    width: 100%;
   }
 
   .play-button {
