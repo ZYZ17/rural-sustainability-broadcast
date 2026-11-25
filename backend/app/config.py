@@ -40,6 +40,7 @@ TTS_SPACE = os.getenv("TTS_SPACE", "united-link/taiwanese-hakka-tts").strip()
 TTS_MODEL = os.getenv("TTS_MODEL", "yourtts-htia-240704").strip()
 TTS_DIALECT = os.getenv("TTS_DIALECT", "dapu").strip()
 TTS_SPEAKER = os.getenv("TTS_SPEAKER", "宋涵葳").strip()
-TTS_SPEED = float(os.getenv("TTS_SPEED", "1.0"))
+# VoxHakka 的 speed 其實是 length_scale，越大越慢；1.15 讓廣播不那麼急促。
+TTS_SPEED = float(os.getenv("TTS_SPEED", "1.15"))
 TTS_TIMEOUT_SECONDS = int(os.getenv("TTS_TIMEOUT_SECONDS", "900"))
 TTS_CACHE_ENABLED = os.getenv("TTS_CACHE_ENABLED", "1").strip().lower() not in {"0", "false", "no"}

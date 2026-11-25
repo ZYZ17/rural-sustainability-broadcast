@@ -41,7 +41,7 @@ services:
       - key: TTS_SPEAKER
         value: "宋涵葳"
       - key: TTS_SPEED
-        value: "1.0"
+        value: "1.15"
       - key: TTS_TIMEOUT_SECONDS
         value: "900"
       - key: TTS_CACHE_ENABLED

@@ -21,7 +21,7 @@ TTS_SPACE=united-link/taiwanese-hakka-tts
 TTS_MODEL=yourtts-htia-240704
 TTS_DIALECT=dapu
 TTS_SPEAKER=宋涵葳
-TTS_SPEED=1.0
+TTS_SPEED=1.15
 TTS_TIMEOUT_SECONDS=900
 TTS_CACHE_ENABLED=1
 ```
@@ -74,6 +74,11 @@ GET /api/tts/jobs/{id}
 - 檔名為 `space + model + dialect + speaker + speed + text` 的 SHA-256 前 24 碼
 - 相同文字會直接命中快取，不再呼叫 Space
 - `TTS_CACHE_ENABLED=0` 可停用快取
+
+## 播放節奏
+
+- `TTS_SPEED` 在 VoxHakka 上是 `length_scale`，**數值越大越慢**；目前設為 `1.15`，讓行情播報不那麼急促。
+- `backend/app/services/broadcast.py` 會在每個廣播段落之間插入三個全形逗號。G2P 會把逗號轉成獨立的停頓 token，因此「氣象→行情」「行情→行情」之間約有一秒停頓；這些逗號只進 `tts_text`，不會顯示在頁面的廣播稿上。
 
 ## 限制
 

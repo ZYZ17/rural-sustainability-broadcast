@@ -55,3 +55,5 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ## 語音
 
 語音由 [VoxHakka](https://huggingface.co/spaces/united-link/taiwanese-hakka-tts) 提供，設定為大埔腔、 speaker `宋涵葳`。首次合成較慢，之後會快取於 `data/tts_samples/`。
+
+等待合成時會播放大埔腔童謠〈月光光、吊四方〉，音檔來自 [臺中市政府客家事務委員會](https://www.hakka.taichung.gov.tw/71507/Lpsimplelist)，依該會「政府網站資料開放宣告」使用並註明出處。播放時會先漸強，合成完成後 5 秒漸弱，語音播完後音樂從中斷處漸強續播。

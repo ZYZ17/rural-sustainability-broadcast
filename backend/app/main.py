@@ -33,6 +33,11 @@ app.add_middleware(
 )
 TTS_DIR.mkdir(parents=True, exist_ok=True)
 app.mount("/audio", StaticFiles(directory=str(TTS_DIR)), name="audio")
+app.mount(
+    "/music",
+    StaticFiles(directory=str(FRONTEND_DIR / "public" / "music")),
+    name="waiting-music",
+)
 
 _cache: dict[str, tuple[float, dict[str, Any] | None]] = {
     "prices": (0.0, None),

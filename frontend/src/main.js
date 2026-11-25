@@ -11,6 +11,11 @@ let API_BASE = (document.querySelector('meta[name="api-base"]')?.content || '').
 let USE_REMOTE = Boolean(API_BASE);
 let DEMO_SITE = STATIC_SITE && !USE_REMOTE;
 const APP_BASE = new URL('.', window.location.href).pathname;
+const WAITING_MUSIC_PATH = '/music/dagpu-moonlight.mp3';
+const WAITING_MUSIC_VOLUME = 0.55;
+const MUSIC_FADE_IN_MS = 2500;
+const MUSIC_FADE_OUT_MS = 5000;
+const VOICE_FADE_IN_MS = 1200;
 
 function applyApiBase(value) {
   API_BASE = String(value || '').replace(/\/$/, '');
@@ -93,6 +98,9 @@ const state = {
   loading: false,
   notice: null,
   audio: null,
+  music: null,
+  musicPausedForVoice: false,
+  transitioning: false,
   ttsJob: null,
   ttsTimer: null,
   ttsClock: null,
@@ -960,13 +968,13 @@ function renderActionBar() {
   summary.innerHTML = `已選 <strong>${state.selectedCrops.size}</strong> 種作物、<strong>${state.selectedMarkets.size}</strong> 個市場`;
   playButton.classList.toggle('is-speaking', playing);
   playButton.classList.toggle('is-paused', paused);
-  playButton.disabled = state.loading || ttsRunning;
+  playButton.disabled = state.loading || ttsRunning || state.transitioning;
   playButton.setAttribute('aria-pressed', String(playing));
   const action = paused ? '繼續播放' : (playing ? '暫停播放' : '播放廣播');
   playButton.setAttribute('aria-label', action);
-  label.textContent = ttsRunning
-    ? '合成中…'
-    : (state.loading ? '產生中…' : action);
+  label.textContent = state.transitioning
+    ? '準備播放…'
+    : (ttsRunning ? '合成中…' : (state.loading ? '產生中…' : action));
 }
 
 function renderNotice() {
@@ -1048,6 +1056,98 @@ async function loadBootstrap() {
   if (state.firstVisit) openSettings('first');
 }
 
+function waitingMusicUrl() {
+  return mediaUrl(WAITING_MUSIC_PATH);
+}
+
+function cancelVolumeFade(audio) {
+  if (!audio) return;
+  if (audio.__fadeFrame) cancelAnimationFrame(audio.__fadeFrame);
+  audio.__fadeFrame = null;
+  audio.__fadeToken = (audio.__fadeToken || 0) + 1;
+}
+
+function fadeVolume(audio, to, duration) {
+  if (!audio) return Promise.resolve(false);
+  const token = (audio.__fadeToken || 0) + 1;
+  audio.__fadeToken = token;
+  const from = Number.isFinite(audio.volume) ? audio.volume : 0;
+  const started = performance.now();
+  return new Promise((resolve) => {
+    const step = (now) => {
+      if (audio.__fadeToken !== token) {
+        resolve(false);
+        return;
+      }
+      const progress = Math.min(1, Math.max(0, (now - started) / duration));
+      audio.volume = Math.max(0, Math.min(1, from + (to - from) * progress));
+      if (progress < 1) {
+        audio.__fadeFrame = requestAnimationFrame(step);
+      } else {
+        audio.__fadeFrame = null;
+        resolve(true);
+      }
+    };
+    audio.__fadeFrame = requestAnimationFrame(step);
+  });
+}
+
+function startWaitingMusic() {
+  stopWaitingMusic();
+  const audio = new Audio(waitingMusicUrl());
+  audio.loop = true;
+  audio.volume = 0;
+  state.music = audio;
+  audio.addEventListener('error', () => {
+    if (state.music === audio) {
+      stopWaitingMusic();
+      setNotice('背景音樂載入失敗，語音合成仍會繼續。', 'info');
+    }
+  });
+  audio.play().then(() => {
+    if (state.music !== audio) return;
+    fadeVolume(audio, WAITING_MUSIC_VOLUME, MUSIC_FADE_IN_MS);
+  }).catch(() => {
+    if (state.music !== audio) return;
+    stopWaitingMusic();
+    setNotice('瀏覽器阻擋了背景音樂，語音合成仍會繼續。', 'info');
+  });
+}
+
+async function fadeOutWaitingMusic() {
+  const audio = state.music;
+  if (!audio) return;
+  await fadeVolume(audio, 0, MUSIC_FADE_OUT_MS);
+  if (state.music !== audio) return;
+  audio.pause();
+  state.musicPausedForVoice = true;
+}
+
+function resumeWaitingMusic() {
+  const audio = state.music;
+  if (!audio || !state.musicPausedForVoice) return;
+  state.musicPausedForVoice = false;
+  audio.volume = 0;
+  audio.play().then(() => {
+    if (state.music !== audio) return;
+    fadeVolume(audio, WAITING_MUSIC_VOLUME, MUSIC_FADE_IN_MS);
+  }).catch(() => {
+    if (state.music !== audio) return;
+    stopWaitingMusic();
+  });
+}
+
+function stopWaitingMusic() {
+  const audio = state.music;
+  state.music = null;
+  state.musicPausedForVoice = false;
+  if (!audio) return;
+  cancelVolumeFade(audio);
+  audio.pause();
+  audio.currentTime = 0;
+  audio.volume = WAITING_MUSIC_VOLUME;
+}
+
 function isTtsRunning() {
   return state.ttsJob?.status === 'queued' || state.ttsJob?.status === 'running';
 }
@@ -1078,6 +1178,7 @@ function formatElapsed(ms) {
 function resetTts() {
   stopTtsPolling();
   stopTtsClock();
+  stopWaitingMusic();
   if (state.audio) {
     state.audio.pause();
     state.audio = null;
@@ -1095,7 +1196,7 @@ function renderTtsStatus() {
     container.innerHTML = '';
     return;
   }
-  const attribution = '<p class="attribution">語音引擎：VoxHakka 大埔腔（宋涵葳，東勢）・CC BY-NC 4.0・僅供非商業使用</p>';
+  const attribution = '<p class="attribution">語音引擎：VoxHakka 大埔腔（宋涵葳，東勢）・CC BY-NC 4.0・僅供非商業使用<br>等待音樂：〈月光光、吊四方〉・臺中市政府客家事務委員會製作・政府網站資料開放宣告（須註明出處）</p>';
   const job = state.ttsJob;
   let body = '';
   if (job && (job.status === 'queued' || job.status === 'running')) {
@@ -1106,7 +1207,7 @@ function renderTtsStatus() {
         <span>${job.status === 'queued' ? '排隊中' : '大埔腔語音合成中'}… ${elapsed}</span>
         <button type="button" class="text-button" id="tts-cancel">停止等待</button>
       </div>
-      <p class="hint">首次合成約需 30–60 秒；完成後會自動播放並快取。</p>
+      <p class="hint">等待期間會播放大埔腔童謠〈月光光、吊四方〉；合成完成後音樂會在 5 秒內漸弱，再播出行情。</p>
     `;
   } else if (job && job.status === 'error') {
     const words = job.unknown_words?.length
@@ -1121,7 +1222,7 @@ function renderTtsStatus() {
     `;
   } else if (state.broadcast.audio_url) {
     const elapsed = job?.elapsed_seconds ? `（${job.elapsed_seconds} 秒）` : '';
-    body = `<div class="tts-ready"><span>大埔腔語音已就緒${elapsed}</span>${job?.cached ? '<span class="badge">快取</span>' : ''}</div>`;
+    body = `<div class="tts-ready"><span>大埔腔語音已就緒${elapsed}${state.transitioning ? '（音樂漸弱後播放）' : ''}</span>${job?.cached ? '<span class="badge">快取</span>' : ''}</div>`;
   } else {
     body = '<p class="hint">按「播放廣播」後會開始合成大埔腔語音。</p>';
   }
@@ -1131,6 +1232,7 @@ function renderTtsStatus() {
     cancel.addEventListener('click', () => {
       stopTtsPolling();
       stopTtsClock();
+      stopWaitingMusic();
       state.ttsJob = null;
       setNotice('已停止等待語音合成；背景工作可能仍會完成。', 'info');
       renderTtsStatus();
@@ -1166,6 +1268,7 @@ async function startTtsJob(text) {
   state.ttsJob = { status: 'queued', startedAt: Date.now() };
   renderTtsStatus();
   renderActionBar();
+  startWaitingMusic();
   startTtsClock();
   try {
     const response = await fetch(apiUrl('/api/tts/jobs'), {
@@ -1181,6 +1284,7 @@ async function startTtsJob(text) {
     pollTtsJob(job.id);
   } catch (error) {
     stopTtsClock();
+    stopWaitingMusic();
     state.ttsJob = { status: 'error', error: error.message };
     renderTtsStatus();
     renderActionBar();
@@ -1201,13 +1305,18 @@ async function pollTtsJob(jobId) {
       if (job.status === 'done') {
         stopTtsClock();
         if (state.broadcast) state.broadcast.audio_url = mediaUrl(job.audio_url);
+        state.transitioning = true;
         renderTtsStatus();
         renderActionBar();
+        await fadeOutWaitingMusic();
+        state.transitioning = false;
+        if (!state.ttsJob || state.ttsJob.id !== jobId) return;
         if (job.audio_url) playAudio(job.audio_url);
         return;
       }
       if (job.status === 'error') {
         stopTtsClock();
+        stopWaitingMusic();
         renderTtsStatus();
         renderActionBar();
         setNotice(job.error || '語音合成失敗', 'error');
@@ -1218,6 +1327,7 @@ async function pollTtsJob(jobId) {
       state.ttsTimer = setTimeout(tick, 2000);
     } catch (error) {
       stopTtsClock();
+      stopWaitingMusic();
       if (!state.ttsJob || state.ttsJob.id !== jobId) return;
       state.ttsJob = { ...state.ttsJob, status: 'error', error: error.message };
       renderTtsStatus();
@@ -1299,7 +1409,7 @@ async function playBroadcast() {
 }
 
 function togglePlayback() {
-  if (state.loading || isTtsRunning()) return;
+  if (state.loading || isTtsRunning() || state.transitioning) return;
   const audio = state.audio;
   if (!audio || audio.ended) {
     playBroadcast();
@@ -1307,6 +1417,10 @@ function togglePlayback() {
   }
   if (audio.paused) {
     audio.play().then(() => {
+      const music = state.music;
+      if (music && !state.musicPausedForVoice && music.paused) {
+        music.play().then(() => fadeVolume(music, WAITING_MUSIC_VOLUME, 1000)).catch(() => {});
+      }
       renderActionBar();
     }).catch(() => {
       renderActionBar();
@@ -1315,12 +1429,18 @@ function togglePlayback() {
     return;
   }
   audio.pause();
+  const music = state.music;
+  if (music && !state.musicPausedForVoice && !music.paused) {
+    cancelVolumeFade(music);
+    music.pause();
+  }
   renderActionBar();
 }
 
 function playAudio(url) {
   if (state.audio) state.audio.pause();
   const audio = new Audio(url);
+  audio.volume = 0;
   state.audio = audio;
   state.speaking = true;
   renderActionBar();
@@ -1328,16 +1448,19 @@ function playAudio(url) {
     if (state.audio !== audio) return;
     state.speaking = false;
     state.audio = null;
+    resumeWaitingMusic();
     renderActionBar();
   });
   audio.addEventListener('error', () => {
     if (state.audio !== audio) return;
     state.speaking = false;
     state.audio = null;
+    resumeWaitingMusic();
     renderActionBar();
     setNotice('音檔播放失敗。', 'error');
   });
   audio.play().then(() => {
+    fadeVolume(audio, 1, VOICE_FADE_IN_MS);
     renderActionBar();
   }).catch(() => {
     if (state.audio !== audio) return;

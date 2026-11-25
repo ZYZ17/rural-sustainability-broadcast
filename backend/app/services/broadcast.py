@@ -145,7 +145,18 @@ def build_broadcast(
             )
 
     segments.append({"type": "outro", "text": templates["outro"]})
-    full_text = " ".join(segment["text"] for segment in segments)
+    # VoxHakka 的 G2P 會把全形逗號轉成獨立的停頓 token；
+    # 在每段之間放三個逗號，讓「氣象→行情」「行情→行情」約停一秒，
+    # 避免整段廣播聽起來太急促。停頓只進 tts_text，不進頁面顯示的 segments。
+    paused_parts: list[str] = []
+    for index, segment in enumerate(segments):
+        text = segment["text"].strip()
+        if index < len(segments) - 1:
+            if not text.endswith(("。", "！", "？")):
+                text += "。"
+            text += "，，，"
+        paused_parts.append(text)
+    full_text = "".join(paused_parts)
 
     return {
         "segments": segments,
