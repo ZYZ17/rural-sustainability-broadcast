@@ -1253,7 +1253,7 @@ function renderTtsStatus() {
   }
 }
 
-async function startTtsJob(text) {
+async function startTtsJob(text, musicStarted = false) {
   stopTtsPolling();
   stopTtsClock();
   if (!text) {
@@ -1269,7 +1269,7 @@ async function startTtsJob(text) {
   state.ttsJob = { status: 'queued', startedAt: Date.now() };
   renderTtsStatus();
   renderActionBar();
-  startWaitingMusic();
+  if (!musicStarted || !state.music) startWaitingMusic();
   startTtsClock();
   try {
     const response = await fetch(apiUrl('/api/tts/jobs'), {
@@ -1382,6 +1382,9 @@ async function playBroadcast() {
     playAudio(state.broadcast.audio_url);
     return;
   }
+  // 在按下的瞬間（使用者手勢內）就開始播音樂，避免非同步請求完成後
+  // 再呼叫 play() 被瀏覽器自動播放政策擋住，讓使用者必須按第二次。
+  startWaitingMusic();
   state.loading = true;
   renderActionBar();
   renderScript();
@@ -1401,9 +1404,10 @@ async function playBroadcast() {
     state.loading = false;
     renderScript();
     renderActionBar();
-    startTtsJob(state.broadcast.tts_text || state.broadcast.full_text);
+    startTtsJob(state.broadcast.tts_text || state.broadcast.full_text, true);
   } catch (error) {
     state.loading = false;
+    stopWaitingMusic();
     renderActionBar();
     setNotice(error.message, 'error');
   }
