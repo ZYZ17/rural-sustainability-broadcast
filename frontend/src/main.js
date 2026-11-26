@@ -113,6 +113,7 @@ const state = {
   previewAudio: null,
   previewSeq: 0,
   previewPollTimer: null,
+  activeTab: 'home',
 };
 
 const LOCAL_PREFS_KEY = 'broadcast_preferences';
@@ -252,20 +253,28 @@ function renderShell() {
         <p class="hero-sub">天氣與行情報你知，按一下喇叭就用客語播放。</p>
       </div>
     </header>
+    <nav class="tab-nav" role="tablist" aria-label="頁面分頁">
+      <button type="button" class="tab-button is-active" id="tab-home" role="tab" aria-selected="true" aria-controls="tabpanel-home">主頁</button>
+      <button type="button" class="tab-button" id="tab-climate" role="tab" aria-selected="false" aria-controls="tabpanel-climate">氣候比較</button>
+    </nav>
     <main class="layout">
-      <section id="notice"></section>
-      <section id="status" class="status-panel"></section>
-      <section id="weather"></section>
-      <section id="climate-chart"></section>
-      <section class="panel">
-        <div class="panel-head">
-          <h2>廣播稿</h2>
-          <button type="button" class="text-button" id="refresh-button">重新抓資料</button>
-        </div>
-        <div id="script" class="script"></div>
-        <div id="raw-details" class="raw-details"></div>
-        <div id="tts-status" class="tts-status"></div>
-      </section>
+      <div id="tabpanel-home" class="tab-panel" role="tabpanel" aria-labelledby="tab-home">
+        <section id="notice"></section>
+        <section id="status" class="status-panel"></section>
+        <section id="weather"></section>
+        <section class="panel">
+          <div class="panel-head">
+            <h2>廣播稿</h2>
+            <button type="button" class="text-button" id="refresh-button">重新抓資料</button>
+          </div>
+          <div id="script" class="script"></div>
+          <div id="raw-details" class="raw-details"></div>
+          <div id="tts-status" class="tts-status"></div>
+        </section>
+      </div>
+      <div id="tabpanel-climate" class="tab-panel" role="tabpanel" aria-labelledby="tab-climate" hidden>
+        <section id="climate-chart"></section>
+      </div>
     </main>
     <div class="action-bar">
       <div class="action-summary" id="action-summary"></div>
@@ -423,6 +432,8 @@ function bindEvents() {
     if (icon) icon.textContent = state.previewSpeech ? '🔊' : '🔇';
     if (!state.previewSpeech) stopPreview();
   });
+  document.querySelector('#tab-home').addEventListener('click', () => setActiveTab('home'));
+  document.querySelector('#tab-climate').addEventListener('click', () => setActiveTab('climate'));
   document.querySelector('#play-button').addEventListener('click', togglePlayback);
   document.querySelector('#replay-button').addEventListener('click', replayBroadcastOnly);
   document.querySelector('#refresh-button').addEventListener('click', refreshData);
@@ -692,8 +703,8 @@ function climateDelta(value, unit = '') {
 
 function climateLineSvg(title, unit, series, valueKey, colors, labels, options = {}) {
   const { yMin = null, yMax = null, showValues = false } = options;
-  const width = 480;
-  const height = 220;
+  const width = 720;
+  const height = 300;
   const left = 46;
   const right = 14;
   const top = 28;
@@ -826,11 +837,11 @@ function renderClimate() {
     </div>
   ` : '';
   const temperatureChart = climateLineSvg(
-    '每月平均氣溫', '°C', series, 'mean_t', ['#d97706', '#0284c7'],
-    [`${currentYear} 年`, baselineLabel], { yMin: 15, yMax: 35, showValues: true },
+    '每月平均氣溫', '°C', series, 'mean_t', ['#d97706', '#8b5a2b'],
+    [`${currentYear} 年`, baselineLabel], { yMin: 15, yMax: 30, showValues: true },
   );
   const rainfallChart = climateLineSvg(
-    '每月累積雨量', 'mm', series, 'rainfall', ['#0f766e', '#7c3aed'],
+    '每月累積雨量', 'mm', series, 'rainfall', ['#d97706', '#8b5a2b'],
     [`${currentYear} 年`, baselineLabel], { showValues: true },
   );
   const errors = snapshot.errors || [];
@@ -845,7 +856,7 @@ function renderClimate() {
     <div class="panel climate-panel">
       <div class="panel-head">
         <div>
-          <h2>氣候變化</h2>
+          <h2>氣候比較</h2>
           <p class="climate-sub">${escapeHtml(snapshot.station?.name || '')}氣象站 ${escapeHtml(snapshot.station?.id || '')}・今年與所選基準每月統計${escapeHtml(asOf)}</p>
         </div>
         <label class="climate-select">
@@ -965,6 +976,23 @@ function renderRawDetails() {
       <p class="raw-note">資料日期：${escapeHtml(formatDate(state.broadcast.trade_date))}。資料來源：農業部農產品批發市場交易行情（FarmTransData）。平均價為交易量加權平均；上方廣播使用加權平均價。</p>
     </details>
   `;
+}
+
+function setActiveTab(tab) {
+  state.activeTab = tab === 'climate' ? 'climate' : 'home';
+  const homeButton = document.querySelector('#tab-home');
+  const climateButton = document.querySelector('#tab-climate');
+  const homePanel = document.querySelector('#tabpanel-home');
+  const climatePanel = document.querySelector('#tabpanel-climate');
+  if (!homeButton || !climateButton || !homePanel || !climatePanel) return;
+  const climate = state.activeTab === 'climate';
+  homeButton.classList.toggle('is-active', !climate);
+  climateButton.classList.toggle('is-active', climate);
+  homeButton.setAttribute('aria-selected', String(!climate));
+  climateButton.setAttribute('aria-selected', String(climate));
+  homePanel.hidden = climate;
+  climatePanel.hidden = !climate;
+  if (climate) renderClimate();
 }
 
 function renderActionBar() {

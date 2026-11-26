@@ -18,7 +18,7 @@ spec:
     - key: TARGET_TOWN
       value: "東勢區"
     - key: PRESET_MARKET_CODES
-      value: "423,400,420"
+      value: "109,423"
     - key: PREF_TRUST_PROXY
       value: "1"
     - key: TTS_ENGINE

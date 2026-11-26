@@ -29,7 +29,7 @@ CLIMATE_NORMALS_DATASET = os.getenv("CLIMATE_NORMALS_DATASET", "C-B0027-001").st
 CODIS_STATION_URL = os.getenv("CODIS_STATION_URL", "https://codis.cwa.gov.tw/api/station").rstrip("/")
 LOW_TEMP_THRESHOLD = float(os.getenv("LOW_TEMP_THRESHOLD", "12"))
 HEAVY_RAIN_POP_THRESHOLD = float(os.getenv("HEAVY_RAIN_POP_THRESHOLD", "70"))
-PRESET_MARKET_CODES = [c.strip() for c in os.getenv("PRESET_MARKET_CODES", "423,400,420").split(",") if c.strip()]
+PRESET_MARKET_CODES = [c.strip() for c in os.getenv("PRESET_MARKET_CODES", "109,423").split(",") if c.strip()]
 
 PREFERENCES_FILE = DATA_DIR / "preferences.json"
 PREF_HASH_SALT = os.getenv("PREF_HASH_SALT", "rural-broadcast-dev-salt").strip()

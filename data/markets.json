@@ -1,34 +1,33 @@
 [
   {
-    "code": "423",
-    "name": "東勢區",
+    "code": "109",
+    "name": "臺北一",
     "api_names": [
-      "東勢鎮"
+      "臺北一"
     ],
-    "crop_count": 13,
-    "row_count": 25,
+    "crop_count": 364,
+    "row_count": 675,
     "preset": true
   },
   {
-    "code": "400",
-    "name": "臺中市",
+    "code": "104",
+    "name": "臺北二",
     "api_names": [
-      "臺中市",
-      "臺中市場"
+      "臺北二"
     ],
-    "crop_count": 582,
-    "row_count": 1086,
-    "preset": true
+    "crop_count": 336,
+    "row_count": 632,
+    "preset": false
   },
   {
-    "code": "420",
-    "name": "豐原區",
+    "code": "105",
+    "name": "臺北市場",
     "api_names": [
-      "豐原區"
+      "臺北市場"
     ],
-    "crop_count": 134,
-    "row_count": 214,
-    "preset": true
+    "crop_count": 558,
+    "row_count": 1419,
+    "preset": false
   },
   {
     "code": "241",
@@ -38,57 +37,6 @@
     ],
     "crop_count": 279,
     "row_count": 505,
-    "preset": false
-  },
-  {
-    "code": "540",
-    "name": "南投市",
-    "api_names": [
-      "南投市"
-    ],
-    "crop_count": 15,
-    "row_count": 30,
-    "preset": false
-  },
-  {
-    "code": "600",
-    "name": "嘉義市",
-    "api_names": [
-      "嘉義市"
-    ],
-    "crop_count": 33,
-    "row_count": 62,
-    "preset": false
-  },
-  {
-    "code": "260",
-    "name": "宜蘭市",
-    "api_names": [
-      "宜蘭市"
-    ],
-    "crop_count": 78,
-    "row_count": 135,
-    "preset": false
-  },
-  {
-    "code": "900",
-    "name": "屏東市",
-    "api_names": [
-      "屏東市"
-    ],
-    "crop_count": 147,
-    "row_count": 258,
-    "preset": false
-  },
-  {
-    "code": "514",
-    "name": "彰化市場",
-    "api_names": [
-      "彰化市場",
-      "溪湖鎮"
-    ],
-    "crop_count": 347,
-    "row_count": 731,
     "preset": false
   },
   {
@@ -112,6 +60,68 @@
     "preset": false
   },
   {
+    "code": "260",
+    "name": "宜蘭市",
+    "api_names": [
+      "宜蘭市"
+    ],
+    "crop_count": 78,
+    "row_count": 135,
+    "preset": false
+  },
+  {
+    "code": "423",
+    "name": "東勢區",
+    "api_names": [
+      "東勢鎮"
+    ],
+    "crop_count": 13,
+    "row_count": 25,
+    "preset": true
+  },
+  {
+    "code": "420",
+    "name": "豐原區",
+    "api_names": [
+      "豐原區"
+    ],
+    "crop_count": 134,
+    "row_count": 214,
+    "preset": false
+  },
+  {
+    "code": "400",
+    "name": "臺中市",
+    "api_names": [
+      "臺中市",
+      "臺中市場"
+    ],
+    "crop_count": 582,
+    "row_count": 1086,
+    "preset": false
+  },
+  {
+    "code": "540",
+    "name": "南投市",
+    "api_names": [
+      "南投市"
+    ],
+    "crop_count": 15,
+    "row_count": 30,
+    "preset": false
+  },
+  {
+    "code": "514",
+    "name": "彰化市場",
+    "api_names": [
+      "彰化市場",
+      "溪湖鎮"
+    ],
+    "crop_count": 347,
+    "row_count": 731,
+    "preset": false
+  },
+  {
     "code": "512",
     "name": "永靖鄉",
     "api_names": [
@@ -122,33 +132,23 @@
     "preset": false
   },
   {
-    "code": "109",
-    "name": "臺北一",
+    "code": "648",
+    "name": "西螺鎮",
     "api_names": [
-      "臺北一"
+      "西螺鎮"
     ],
-    "crop_count": 364,
-    "row_count": 675,
+    "crop_count": 50,
+    "row_count": 148,
     "preset": false
   },
   {
-    "code": "104",
-    "name": "臺北二",
+    "code": "600",
+    "name": "嘉義市",
     "api_names": [
-      "臺北二"
+      "嘉義市"
     ],
-    "crop_count": 336,
-    "row_count": 632,
-    "preset": false
-  },
-  {
-    "code": "105",
-    "name": "臺北市場",
-    "api_names": [
-      "臺北市場"
-    ],
-    "crop_count": 558,
-    "row_count": 1419,
+    "crop_count": 33,
+    "row_count": 62,
     "preset": false
   },
   {
@@ -182,16 +182,6 @@
     "preset": false
   },
   {
-    "code": "648",
-    "name": "西螺鎮",
-    "api_names": [
-      "西螺鎮"
-    ],
-    "crop_count": 50,
-    "row_count": 148,
-    "preset": false
-  },
-  {
     "code": "800",
     "name": "高雄市",
     "api_names": [
@@ -210,6 +200,16 @@
     ],
     "crop_count": 92,
     "row_count": 223,
+    "preset": false
+  },
+  {
+    "code": "900",
+    "name": "屏東市",
+    "api_names": [
+      "屏東市"
+    ],
+    "crop_count": 147,
+    "row_count": 258,
     "preset": false
   }
 ]
