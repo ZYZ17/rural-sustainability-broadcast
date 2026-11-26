@@ -182,7 +182,7 @@ def build_markets(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "preset": code in PRESET_MARKET_CODES,
             }
         )
-    markets.sort(key=lambda item: (not item["preset"], item["name"]))
+    markets.sort(key=lambda item: item["code"])
     return markets
 
 

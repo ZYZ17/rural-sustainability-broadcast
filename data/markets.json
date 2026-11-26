@@ -1,15 +1,5 @@
 [
   {
-    "code": "109",
-    "name": "臺北一",
-    "api_names": [
-      "臺北一"
-    ],
-    "crop_count": 364,
-    "row_count": 675,
-    "preset": true
-  },
-  {
     "code": "104",
     "name": "臺北二",
     "api_names": [
@@ -30,14 +20,14 @@
     "preset": false
   },
   {
-    "code": "241",
-    "name": "三重區",
+    "code": "109",
+    "name": "臺北一",
     "api_names": [
-      "三重區"
+      "臺北一"
     ],
-    "crop_count": 279,
-    "row_count": 505,
-    "preset": false
+    "crop_count": 364,
+    "row_count": 675,
+    "preset": true
   },
   {
     "code": "220",
@@ -50,13 +40,13 @@
     "preset": false
   },
   {
-    "code": "338",
-    "name": "桃農",
+    "code": "241",
+    "name": "三重區",
     "api_names": [
-      "桃農"
+      "三重區"
     ],
-    "crop_count": 200,
-    "row_count": 370,
+    "crop_count": 279,
+    "row_count": 505,
     "preset": false
   },
   {
@@ -70,23 +60,13 @@
     "preset": false
   },
   {
-    "code": "423",
-    "name": "東勢區",
+    "code": "338",
+    "name": "桃農",
     "api_names": [
-      "東勢鎮"
+      "桃農"
     ],
-    "crop_count": 13,
-    "row_count": 25,
-    "preset": true
-  },
-  {
-    "code": "420",
-    "name": "豐原區",
-    "api_names": [
-      "豐原區"
-    ],
-    "crop_count": 134,
-    "row_count": 214,
+    "crop_count": 200,
+    "row_count": 370,
     "preset": false
   },
   {
@@ -101,13 +81,33 @@
     "preset": false
   },
   {
-    "code": "540",
-    "name": "南投市",
+    "code": "420",
+    "name": "豐原區",
     "api_names": [
-      "南投市"
+      "豐原區"
     ],
-    "crop_count": 15,
-    "row_count": 30,
+    "crop_count": 134,
+    "row_count": 214,
+    "preset": false
+  },
+  {
+    "code": "423",
+    "name": "東勢區",
+    "api_names": [
+      "東勢鎮"
+    ],
+    "crop_count": 13,
+    "row_count": 25,
+    "preset": true
+  },
+  {
+    "code": "512",
+    "name": "永靖鄉",
+    "api_names": [
+      "永靖鄉"
+    ],
+    "crop_count": 8,
+    "row_count": 15,
     "preset": false
   },
   {
@@ -122,23 +122,13 @@
     "preset": false
   },
   {
-    "code": "512",
-    "name": "永靖鄉",
+    "code": "540",
+    "name": "南投市",
     "api_names": [
-      "永靖鄉"
+      "南投市"
     ],
-    "crop_count": 8,
-    "row_count": 15,
-    "preset": false
-  },
-  {
-    "code": "648",
-    "name": "西螺鎮",
-    "api_names": [
-      "西螺鎮"
-    ],
-    "crop_count": 50,
-    "row_count": 148,
+    "crop_count": 15,
+    "row_count": 30,
     "preset": false
   },
   {
@@ -152,6 +142,16 @@
     "preset": false
   },
   {
+    "code": "648",
+    "name": "西螺鎮",
+    "api_names": [
+      "西螺鎮"
+    ],
+    "crop_count": 50,
+    "row_count": 148,
+    "preset": false
+  },
+  {
     "code": "700",
     "name": "臺南市場",
     "api_names": [
@@ -159,26 +159,6 @@
     ],
     "crop_count": 309,
     "row_count": 466,
-    "preset": false
-  },
-  {
-    "code": "930",
-    "name": "臺東市",
-    "api_names": [
-      "臺東市"
-    ],
-    "crop_count": 23,
-    "row_count": 23,
-    "preset": false
-  },
-  {
-    "code": "950",
-    "name": "花蓮市",
-    "api_names": [
-      "花蓮市"
-    ],
-    "crop_count": 88,
-    "row_count": 190,
     "preset": false
   },
   {
@@ -210,6 +190,26 @@
     ],
     "crop_count": 147,
     "row_count": 258,
+    "preset": false
+  },
+  {
+    "code": "930",
+    "name": "臺東市",
+    "api_names": [
+      "臺東市"
+    ],
+    "crop_count": 23,
+    "row_count": 23,
+    "preset": false
+  },
+  {
+    "code": "950",
+    "name": "花蓮市",
+    "api_names": [
+      "花蓮市"
+    ],
+    "crop_count": 88,
+    "row_count": 190,
     "preset": false
   }
 ]
