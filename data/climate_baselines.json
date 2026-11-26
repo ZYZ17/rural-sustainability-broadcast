@@ -1,0 +1,389 @@
+{
+  "version": 2,
+  "generated_at": "2026-11-24T19:14:37+08:00",
+  "station": {
+    "id": "467490",
+    "name": "臺中"
+  },
+  "current_year": 2026,
+  "periods": {
+    "last30": {
+      "label": "近30年",
+      "years": [
+        1996,
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "count": 30,
+      "period": "1996-2025"
+    },
+    "last10": {
+      "label": "近10年",
+      "years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "count": 10,
+      "period": "2016-2025"
+    },
+    "last5": {
+      "label": "近5年",
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "count": 5,
+      "period": "2021-2025"
+    },
+    "last_year": {
+      "label": "去年",
+      "years": [
+        2025
+      ],
+      "count": 1,
+      "period": "2025-2025"
+    }
+  },
+  "series": [
+    {
+      "month": 1,
+      "current": {
+        "mean_t": 17.4,
+        "rainfall": 2.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 17.1,
+          "rainfall": 34.8
+        },
+        "last10": {
+          "mean_t": 17.6,
+          "rainfall": 42.1
+        },
+        "last5": {
+          "mean_t": 17.0,
+          "rainfall": 15.1
+        },
+        "last_year": {
+          "mean_t": 16.3,
+          "rainfall": 27.0
+        }
+      }
+    },
+    {
+      "month": 2,
+      "current": {
+        "mean_t": 19.5,
+        "rainfall": 6.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 17.9,
+          "rainfall": 57.1
+        },
+        "last10": {
+          "mean_t": 18.1,
+          "rainfall": 33.8
+        },
+        "last5": {
+          "mean_t": 18.1,
+          "rainfall": 50.4
+        },
+        "last_year": {
+          "mean_t": 17.1,
+          "rainfall": 78.5
+        }
+      }
+    },
+    {
+      "month": 3,
+      "current": {
+        "mean_t": 21.2,
+        "rainfall": 10.5
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 20.3,
+          "rainfall": 80.1
+        },
+        "last10": {
+          "mean_t": 20.7,
+          "rainfall": 83.4
+        },
+        "last5": {
+          "mean_t": 20.9,
+          "rainfall": 66.2
+        },
+        "last_year": {
+          "mean_t": 19.7,
+          "rainfall": 110.0
+        }
+      }
+    },
+    {
+      "month": 4,
+      "current": {
+        "mean_t": 25.1,
+        "rainfall": 232.5
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 23.7,
+          "rainfall": 124.5
+        },
+        "last10": {
+          "mean_t": 24.1,
+          "rainfall": 97.7
+        },
+        "last5": {
+          "mean_t": 24.2,
+          "rainfall": 97.9
+        },
+        "last_year": {
+          "mean_t": 23.8,
+          "rainfall": 80.5
+        }
+      }
+    },
+    {
+      "month": 5,
+      "current": {
+        "mean_t": 27.3,
+        "rainfall": 68.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 26.5,
+          "rainfall": 260.5
+        },
+        "last10": {
+          "mean_t": 26.9,
+          "rainfall": 228.6
+        },
+        "last5": {
+          "mean_t": 26.6,
+          "rainfall": 234.2
+        },
+        "last_year": {
+          "mean_t": 26.9,
+          "rainfall": 178.5
+        }
+      }
+    },
+    {
+      "month": 6,
+      "current": {
+        "mean_t": 27.9,
+        "rainfall": 639.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 28.1,
+          "rainfall": 329.9
+        },
+        "last10": {
+          "mean_t": 28.5,
+          "rainfall": 341.3
+        },
+        "last5": {
+          "mean_t": 28.4,
+          "rainfall": 278.1
+        },
+        "last_year": {
+          "mean_t": 28.9,
+          "rainfall": 194.5
+        }
+      }
+    },
+    {
+      "month": 7,
+      "current": {
+        "mean_t": 29.4,
+        "rainfall": 292.5
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 29.0,
+          "rainfall": 324.1
+        },
+        "last10": {
+          "mean_t": 29.1,
+          "rainfall": 316.0
+        },
+        "last5": {
+          "mean_t": 29.1,
+          "rainfall": 412.4
+        },
+        "last_year": {
+          "mean_t": 28.3,
+          "rainfall": 1177.5
+        }
+      }
+    },
+    {
+      "month": 8,
+      "current": {
+        "mean_t": 28.7,
+        "rainfall": 343.5
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 28.5,
+          "rainfall": 360.9
+        },
+        "last10": {
+          "mean_t": 28.6,
+          "rainfall": 349.6
+        },
+        "last5": {
+          "mean_t": 28.7,
+          "rainfall": 357.4
+        },
+        "last_year": {
+          "mean_t": 28.7,
+          "rainfall": 266.0
+        }
+      }
+    },
+    {
+      "month": 9,
+      "current": {
+        "mean_t": 28.3,
+        "rainfall": 39.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 28.0,
+          "rainfall": 158.9
+        },
+        "last10": {
+          "mean_t": 28.4,
+          "rainfall": 118.0
+        },
+        "last5": {
+          "mean_t": 28.4,
+          "rainfall": 160.9
+        },
+        "last_year": {
+          "mean_t": 28.7,
+          "rainfall": 151.5
+        }
+      }
+    },
+    {
+      "month": 10,
+      "current": {
+        "mean_t": 26.9,
+        "rainfall": 51.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 25.9,
+          "rainfall": 28.4
+        },
+        "last10": {
+          "mean_t": 26.5,
+          "rainfall": 23.7
+        },
+        "last5": {
+          "mean_t": 26.7,
+          "rainfall": 28.1
+        },
+        "last_year": {
+          "mean_t": 27.7,
+          "rainfall": 7.0
+        }
+      }
+    },
+    {
+      "month": 11,
+      "current": {
+        "mean_t": 23.6,
+        "rainfall": 19.0
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 22.9,
+          "rainfall": 24.8
+        },
+        "last10": {
+          "mean_t": 23.4,
+          "rainfall": 19.5
+        },
+        "last5": {
+          "mean_t": 23.3,
+          "rainfall": 17.6
+        },
+        "last_year": {
+          "mean_t": 23.1,
+          "rainfall": 2.0
+        }
+      }
+    },
+    {
+      "month": 12,
+      "current": {
+        "mean_t": null,
+        "rainfall": null
+      },
+      "baselines": {
+        "last30": {
+          "mean_t": 18.8,
+          "rainfall": 30.3
+        },
+        "last10": {
+          "mean_t": 19.3,
+          "rainfall": 22.5
+        },
+        "last5": {
+          "mean_t": 18.9,
+          "rainfall": 14.1
+        },
+        "last_year": {
+          "mean_t": 19.9,
+          "rainfall": 4.0
+        }
+      }
+    }
+  ],
+  "source": "中央氣象署 CODiS 氣候觀測資料查詢服務（日報表）",
+  "errors": []
+}

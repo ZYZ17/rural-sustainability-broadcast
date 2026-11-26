@@ -1,0 +1,166 @@
+{
+  "items": {
+    "甜柿": {
+      "ready": true,
+      "audio_url": "audio/a11a3910e04748d853ed937c.wav"
+    },
+    "紅柿": {
+      "ready": true,
+      "audio_url": "audio/59d005c64a665ff1d3c12d97.wav"
+    },
+    "椪柑": {
+      "ready": true,
+      "audio_url": "audio/ad7a7f934b235ed01b8e8a19.wav"
+    },
+    "桶柑": {
+      "ready": true,
+      "audio_url": "audio/106d5c72cb22eee0702c0dae.wav"
+    },
+    "茂谷柑": {
+      "ready": true,
+      "audio_url": "audio/831af09349a6ddffe0d51c94.wav"
+    },
+    "甘露梨": {
+      "ready": true,
+      "audio_url": "audio/59b29006c1990f063eefff5e.wav"
+    },
+    "新興梨": {
+      "ready": true,
+      "audio_url": "audio/e99e0114ac81b2bc6885c156.wav"
+    },
+    "4029梨": {
+      "ready": true,
+      "audio_url": "audio/c1ba6cc0d18955b1ae1cc013.wav"
+    },
+    "水蜜桃": {
+      "ready": true,
+      "audio_url": "audio/79ac03f6d32648d39dc632b4.wav"
+    },
+    "李仔": {
+      "ready": true,
+      "audio_url": "audio/1e86be0a0af6feccb5272bdc.wav"
+    },
+    "梅仔": {
+      "ready": true,
+      "audio_url": "audio/a2cf81ca2ba33c45386c9a90.wav"
+    },
+    "龍眼": {
+      "ready": true,
+      "audio_url": "audio/2301224b4a994a94e91d8712.wav"
+    },
+    "荔枝": {
+      "ready": true,
+      "audio_url": "audio/8bac8e5594ade6891e03ddfb.wav"
+    },
+    "酪梨": {
+      "ready": true,
+      "audio_url": "audio/a5f778fd4d57d041b93ca190.wav"
+    },
+    "桂竹筍": {
+      "ready": true,
+      "audio_url": "audio/a596b3922917c184997144e1.wav"
+    },
+    "綠竹筍": {
+      "ready": true,
+      "audio_url": "audio/da25c9dccef7444a26834ec1.wav"
+    },
+    "咖啡": {
+      "ready": true,
+      "audio_url": "audio/6a93e21ae8cbf269c01acc2a.wav"
+    },
+    "香菇": {
+      "ready": true,
+      "audio_url": "audio/01ea58a69e12bb03235acfcf.wav"
+    },
+    "東勢區": {
+      "ready": true,
+      "audio_url": "audio/fb46905de09067794faa55ea.wav"
+    },
+    "臺中市": {
+      "ready": true,
+      "audio_url": "audio/f52e24ebd9f52cc847e66c5b.wav"
+    },
+    "豐原區": {
+      "ready": true,
+      "audio_url": "audio/861ceb6b61e021ff77d49da8.wav"
+    },
+    "三重區": {
+      "ready": true,
+      "audio_url": "audio/0ef706cb7db008aa347688ea.wav"
+    },
+    "南投市": {
+      "ready": true,
+      "audio_url": "audio/b2ce682cb07149bf1a409aca.wav"
+    },
+    "嘉義市": {
+      "ready": true,
+      "audio_url": "audio/4616204623302737338a2aa3.wav"
+    },
+    "宜蘭市": {
+      "ready": true,
+      "audio_url": "audio/9f5deab81a331aefb4536fde.wav"
+    },
+    "屏東市": {
+      "ready": true,
+      "audio_url": "audio/a8b6c6090e305433d11e5f65.wav"
+    },
+    "彰化市場": {
+      "ready": true,
+      "audio_url": "audio/28f03f547a444122cff55c4d.wav"
+    },
+    "板橋區": {
+      "ready": true,
+      "audio_url": "audio/090427e1ba1e8e773f9b6e40.wav"
+    },
+    "桃農": {
+      "ready": true,
+      "audio_url": "audio/fa5dee74e54a824ff38c76a6.wav"
+    },
+    "永靖鄉": {
+      "ready": true,
+      "audio_url": "audio/42d02721ca1d0342849a312e.wav"
+    },
+    "臺北一": {
+      "ready": true,
+      "audio_url": "audio/f27e7f7f4a76da75bba4da1d.wav"
+    },
+    "臺北二": {
+      "ready": true,
+      "audio_url": "audio/571cbeba85a10f80586c7692.wav"
+    },
+    "臺北市場": {
+      "ready": true,
+      "audio_url": "audio/8e53ab2c79059d57b6789d79.wav"
+    },
+    "臺南市場": {
+      "ready": true,
+      "audio_url": "audio/ee05015932f8db2b92122595.wav"
+    },
+    "臺東市": {
+      "ready": true,
+      "audio_url": "audio/d905847d94de7ea7cbb42fae.wav"
+    },
+    "花蓮市": {
+      "ready": true,
+      "audio_url": "audio/32fe902dccdc36157b69ec72.wav"
+    },
+    "西螺鎮": {
+      "ready": true,
+      "audio_url": "audio/e124893a08694ef417aa6c42.wav"
+    },
+    "高雄市": {
+      "ready": true,
+      "audio_url": "audio/a3f3ef96d58a5fe9a3359044.wav"
+    },
+    "鳳山區": {
+      "ready": true,
+      "audio_url": "audio/56e296deb7681b808777a1d9.wav"
+    }
+  },
+  "ready": 39,
+  "total": 39,
+  "running": false,
+  "errors": [],
+  "started_at": null,
+  "finished_at": null
+}
