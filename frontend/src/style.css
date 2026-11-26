@@ -28,7 +28,13 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  /* 背景圖 + 米黃半透明覆蓋層；調整 0.82 可改變圖片明顯度（越大越淡） */
+  background-color: var(--bg);
+  background-image: linear-gradient(rgba(246, 242, 233, 0.82), rgba(246, 242, 233, 0.82)), url('./site-background.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--ink);
   font-family: var(--font);
   font-size: 18px;
