@@ -338,7 +338,7 @@ function renderShell() {
             <div class="panel-head">
               <h3>市場</h3>
               <div class="panel-actions">
-                <button type="button" class="text-button" id="select-preset-markets">東勢／臺中／豐原</button>
+                <button type="button" class="text-button" id="select-preset-markets">臺北一／東勢區</button>
                 <button type="button" class="text-button" id="clear-markets">清除</button>
               </div>
             </div>
